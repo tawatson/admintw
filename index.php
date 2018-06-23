@@ -279,7 +279,7 @@ $repos = $db->resultSet();
                       <h6 class="lh-1">Total Visits</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed">XXX</div>
+                        <div class="peer peer-greed">Test</div>
                         <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">+10%</span></div>
                       </div>
                     </div>
@@ -658,6 +658,8 @@ $repos = $db->resultSet();
   </div>
   <script type="text/javascript" src="static/vendor.js"></script>
   <script type="text/javascript" src="static/bundle.js"></script>
+  <script type="text/javascript" src="static/assets/scripts.js"></script>
+
 </body>
 
 </html>
