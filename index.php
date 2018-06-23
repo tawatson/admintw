@@ -9,6 +9,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 }
 
 require "config.php";
+
+
 ?>
 <!DOCTYPE html>
 <html>
