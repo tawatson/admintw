@@ -15,6 +15,7 @@ class ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Phelium\\Component\\' => 18,
         ),
         'M' => 
         array (
@@ -31,6 +32,10 @@ class ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Phelium\\Component\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phelium/recaptcha/src',
+        ),
         'Mpdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
@@ -41,7 +46,20 @@ class ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'W' => 
+        array (
+            'Westsworld' => 
+            array (
+                0 => __DIR__ . '/..' . '/jimmiw/php-time-ago/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
+        'Cz\\Git\\GitException' => __DIR__ . '/..' . '/czproject/git-php/src/IGit.php',
+        'Cz\\Git\\GitRepository' => __DIR__ . '/..' . '/czproject/git-php/src/GitRepository.php',
+        'Cz\\Git\\IGit' => __DIR__ . '/..' . '/czproject/git-php/src/IGit.php',
         'FPDF_TPL' => __DIR__ . '/..' . '/setasign/fpdi/fpdf_tpl.php',
         'FPDI' => __DIR__ . '/..' . '/setasign/fpdi/fpdi.php',
         'FilterASCII85' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterASCII85.php',
@@ -56,6 +74,7 @@ class ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0::$classMap;
 
         }, null, ClassLoader::class);

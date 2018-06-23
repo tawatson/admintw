@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Cz\\Git\\GitException' => $vendorDir . '/czproject/git-php/src/IGit.php',
+    'Cz\\Git\\GitRepository' => $vendorDir . '/czproject/git-php/src/GitRepository.php',
+    'Cz\\Git\\IGit' => $vendorDir . '/czproject/git-php/src/IGit.php',
     'FPDF_TPL' => $vendorDir . '/setasign/fpdi/fpdf_tpl.php',
     'FPDI' => $vendorDir . '/setasign/fpdi/fpdi.php',
     'FilterASCII85' => $vendorDir . '/setasign/fpdi/filters/FilterASCII85.php',

@@ -380,15 +380,31 @@ require "config.php";
               <div class="bd bgc-white">
                 <div class="layers">
                   <div class="layer w-100 pX-20 pT-20">
-                    <h6 class="lh-1">Monthly Stats</h6></div>
+                    <h6 class="lh-1">Software Status</h6></div>
                   <div class="layer w-100 p-20"><canvas id="line-chart" height="220"></canvas></div>
                   <div class="layer bdT p-20 w-100">
-                    <div class="peers ai-c jc-c gapX-20">
-                      <div class="peer"><span class="fsz-def fw-600 mR-10 c-grey-800">10% <i class="fa fa-level-up c-green-500"></i></span> <small class="c-grey-500 fw-600">APPL</small></div>
-                      <div class="peer fw-600"><span class="fsz-def fw-600 mR-10 c-grey-800">2% <i class="fa fa-level-down c-red-500"></i></span> <small class="c-grey-500 fw-600">Average</small></div>
-                      <div class="peer fw-600"><span class="fsz-def fw-600 mR-10 c-grey-800">15% <i class="fa fa-level-up c-green-500"></i></span> <small class="c-grey-500 fw-600">Sales</small></div>
-                      <div class="peer fw-600"><span class="fsz-def fw-600 mR-10 c-grey-800">8% <i class="fa fa-level-down c-red-500"></i></span> <small class="c-grey-500 fw-600">Profit</small></div>
-                    </div>
+                    <table class="table table-hover">
+                      <tr>
+                        <th>Repo</th>
+                        <th>Last Pull</th>
+                        <th>Status</th>
+                      </tr>
+                    <? foreach ($repos as $repo) {
+                      $repoClass = new Tawatson_gitHook($db,$repo['local_dir'],$repo['repo_name']);
+                      ?>
+
+                      <tr>
+                            <td><? echo $repo['tidy_name'];?></td>
+                            <td><? echo $timeAgo->inWords(date("M jS, Y g:ia", strtotime($repo['last_pull']. " + 17 hours")));?></td>
+                            <? if($repoClass->isUpToDate()){?>
+                            <td class="table-success" id="repo-<?echo $repo['id'];?>">Up to Date</td>
+                            <?} else {?>
+                            <td class="table-warning" id="repo-<?echo $repo['id'];?>"><strong>Out of Date!</strong> <a href="javascript:void(0);" data-repo="<? echo $repo['id'];?>"  class="repoUpdate btn btn-xs btn-success">Update Now <i class="fa fa-download"></i></a> </td>
+                            <?}?>
+                        </tr>
+
+                    <? } ?>
+                  </table>
                   </div>
                 </div>
               </div>

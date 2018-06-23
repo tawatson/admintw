@@ -269,5 +269,141 @@
             "php",
             "utf-8"
         ]
+    },
+    {
+        "name": "czproject/git-php",
+        "version": "v3.14.0",
+        "version_normalized": "3.14.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/czproject/git-php.git",
+            "reference": "6faf55527a17fb569456709c2769a6d8749ceb6d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/czproject/git-php/zipball/6faf55527a17fb569456709c2769a6d8749ceb6d",
+            "reference": "6faf55527a17fb569456709c2769a6d8749ceb6d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "nette/tester": "~1.1.0"
+        },
+        "time": "2018-04-17T08:52:47+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Jan Pecha",
+                "email": "janpecha@email.cz"
+            }
+        ],
+        "description": "Library for work with Git repository in PHP.",
+        "keywords": [
+            "git"
+        ]
+    },
+    {
+        "name": "jimmiw/php-time-ago",
+        "version": "2.0.5",
+        "version_normalized": "2.0.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jimmiw/php-time-ago.git",
+            "reference": "0f06ebeef43238c91acbba561579c31440e21d5e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jimmiw/php-time-ago/zipball/0f06ebeef43238c91acbba561579c31440e21d5e",
+            "reference": "0f06ebeef43238c91acbba561579c31440e21d5e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6"
+        },
+        "require-dev": {
+            "phpunit/dbunit": "2.0.*",
+            "phpunit/phpunit": "5.*@stable"
+        },
+        "time": "2018-06-11T06:10:31+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Westsworld": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jimmi Westerberg",
+                "homepage": "http://www.westsworld.dk",
+                "role": "Developer"
+            }
+        ],
+        "description": "Simple module, that displays the date in a \"time ago\" format",
+        "homepage": "https://github.com/jimmiw/php-time-ago",
+        "keywords": [
+            "distance of time",
+            "time ago",
+            "time ago in words"
+        ]
+    },
+    {
+        "name": "phelium/recaptcha",
+        "version": "1.0.8",
+        "version_normalized": "1.0.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/shevabam/recaptcha.git",
+            "reference": "e94090ee7237b5e4ddc34c6f26dad43d27816985"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/shevabam/recaptcha/zipball/e94090ee7237b5e4ddc34c6f26dad43d27816985",
+            "reference": "e94090ee7237b5e4ddc34c6f26dad43d27816985",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2018-05-13T13:22:28+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Phelium\\Component\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0-only"
+        ],
+        "authors": [
+            {
+                "name": "ShevAbam"
+            }
+        ],
+        "description": "reCAPTCHA v2 class",
+        "homepage": "https://github.com/shevabam/recaptcha",
+        "keywords": [
+            "captcha",
+            "google",
+            "recaptcha"
+        ]
     }
 ]

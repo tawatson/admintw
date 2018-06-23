@@ -1,0 +1,8 @@
+{
+    "require": {
+        "czproject/git-php": "^3.14",
+        "mpdf/mpdf": "^7.1",
+        "jimmiw/php-time-ago": "^2.0",
+        "phelium/recaptcha": "^1.0"
+    }
+}
