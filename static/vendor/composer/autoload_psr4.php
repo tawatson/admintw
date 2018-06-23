@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Phelium\\Component\\' => array($vendorDir . '/phelium/recaptcha/src'),
     'Mpdf\\' => array($vendorDir . '/mpdf/mpdf/src'),
