@@ -13,6 +13,22 @@ require "config.php";
 $db->query("SELECT * FROM wa_repos");
 $repos = $db->resultSet();
 
+//GANALYTICS SITE VISITS
+$params = array(
+	'metrics' => 'ga:sessions',
+	'dimensions' => 'ga:date'
+);
+$visits = $ganalytics->query($params);
+$numVisits = $visits['totalsForAllResults']['ga:sessions'];
+
+$prevParams = array(
+  'start-date' => date('Y-m-d', strtotime('-2 months')),
+  'end-date' => date('Y-m-d', strtotime('-1 month')),
+  'metrics' => 'ga:sessions',
+  'dimensions' => 'ga:date'
+);
+$prevVisits = $ganalytics->query($prevParams);
+$diffVisits = $numVisits - $prevVisits['totalsForAllResults']['ga:sessions'];
 
 ?>
 <!DOCTYPE html>
@@ -279,8 +295,8 @@ $repos = $db->resultSet();
                       <h6 class="lh-1">Total Visits</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed">Test</div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">+10%</span></div>
+                        <div class="peer peer-greed"><? echo $prevVisits; ?></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"><? echo $diffVisits;?> change</span></div>
                       </div>
                     </div>
                   </div>
