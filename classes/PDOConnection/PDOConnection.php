@@ -1,16 +1,11 @@
 <?php
 class Tawatson_PDOConnection {
-  private $host = DB_SERVER;
-  private $user = DB_USERNAME;
-  private $pass = DB_PASSWORD;
-  private $dbname = DB_NAME;
-
   private $dbh;
   private $error;
 
   private $stmt;
 
-  public function __construct(){
+  public function __construct($host, $dbname, $user, $pass){
     // Set DSN
     $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
 
