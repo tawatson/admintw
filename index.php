@@ -653,7 +653,7 @@ $repos = $db->resultSet();
           </div>
         </div>
       </main>
-      <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2017 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. All rights reserved.</span></footer>
+      <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2018 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. Backend and related code is by Terrence Watson All rights reserved.</span></footer>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
