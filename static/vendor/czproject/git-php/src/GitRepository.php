@@ -585,7 +585,7 @@
 		 * @return string[]|NULL
 		 * @throws GitException
 		 */
-		protected function extractFromCommand($cmd, $filter = NULL)
+		public function extractFromCommand($cmd, $filter = NULL)
 		{
 			$output = array();
 			$exitCode = NULL;
