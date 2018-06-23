@@ -392,7 +392,7 @@ require "config.php";
                         <th>Status</th>
                       </tr>
                     <? foreach ($repos as $repo) {
-                      $repoClass = new Tawatson_gitHook($db,$repo['local_dir'],$repo['repo_name']);
+                    //  $repoClass = new Tawatson_gitHook($db,$repo['local_dir'],$repo['repo_name']);
                       ?>
 
                       <tr>
