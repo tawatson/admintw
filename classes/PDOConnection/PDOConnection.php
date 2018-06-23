@@ -7,7 +7,7 @@ class Tawatson_PDOConnection {
 
   public function __construct($host, $dbname, $user, $pass){
     // Set DSN
-    $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
+    $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
 
     // Set options
     $options = array(
@@ -17,7 +17,7 @@ class Tawatson_PDOConnection {
 
     // Attempt Connection
     try {
-      $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
+      $this->dbh = new PDO($dsn, $user, $pass, $options);
     }
     // Catch any errors
     catch (PDOException $e) {
