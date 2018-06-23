@@ -386,7 +386,6 @@ $repos = $db->resultSet();
                 <div class="layers">
                   <div class="layer w-100 pX-20 pT-20">
                     <h6 class="lh-1">Software Status</h6></div>
-                  <div class="layer w-100 p-20"><canvas id="line-chart" height="220"></canvas></div>
                   <div class="layer bdT p-20 w-100">
                     <table class="table table-hover">
                       <tr>
