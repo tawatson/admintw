@@ -656,7 +656,7 @@ $repos = $db->resultSet();
       <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2017 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. All rights reserved.</span></footer>
     </div>
   </div>
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="static/vendor.js"></script>
   <script type="text/javascript" src="static/bundle.js"></script>
   <script type="text/javascript" src="static/assets/scripts.js"></script>
