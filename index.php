@@ -31,6 +31,22 @@ $analyticsData = $ganalytics->query($prevParams);
 $prevVisits = $analyticsData['totalsForAllResults']['ga:sessions'];
 $diffVisits = $numVisits - $prevVisits;
 
+
+// COUNTRY DATA
+
+$countryParams = array(
+  'metrics' => 'ga:visits',
+  'dimensions' => 'ga:country',
+  'sort' => '-ga:visits',
+  'max-results' => 30,
+);
+$countryvisits = $ganalytics->query($params);
+$jvmData = Array();
+
+foreach ($countryvisits['rows'] as $row) {
+  $jvmData[$countryCodes[$row[0]]] = $row[1];
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -677,6 +693,23 @@ $diffVisits = $numVisits - $prevVisits;
   <script type="text/javascript" src="static/vendor.js"></script>
   <script type="text/javascript" src="static/bundle.js"></script>
   <script type="text/javascript" src="static/assets/scripts.js"></script>
+  <script>
+      $(function(){
+      $('#world-map-marker').vectorMap({
+        map: 'world_mill',
+        series: {
+          regions: [{
+            values: <? echo json_encode($jvmData);?>,
+            scale: ['#C8EEFF', '#0071A4'],
+            normalizeFunction: 'polynomial'
+          }]
+        },
+        onRegionTipShow: function(e, el, code){
+          el.html(el.html()+' (GDP - '+gdpData[code]+')');
+        }
+      });
+    });
+  </script>
 
 </body>
 
