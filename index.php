@@ -31,6 +31,7 @@ $analyticsData = $ganalytics->query($prevParams);
 $prevVisits = $analyticsData['totalsForAllResults']['ga:sessions'];
 $diffVisits = $numVisits - $prevVisits;
 
+$ganalytics->setAccountId('ga:150420384');
 
 // COUNTRY DATA
 $countryParams = array(
