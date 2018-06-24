@@ -693,7 +693,7 @@ foreach ($countryvisits['rows'] as $row) {
   <script type="text/javascript" src="static/vendor.js"></script>
   <script type="text/javascript" src="static/bundle.js"></script>
   <script type="text/javascript" src="static/assets/scripts.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/jquery-jvectormap.js"></script>
+  <script type="text/javascript" src="static/jquery-jvectormap-2.0.3.min.js"></script>
   <script>
       $(function(){
       $('#world-map-marker').vectorMap({
@@ -704,9 +704,6 @@ foreach ($countryvisits['rows'] as $row) {
             scale: ['#C8EEFF', '#0071A4'],
             normalizeFunction: 'polynomial'
           }]
-        },
-        onRegionTipShow: function(e, el, code){
-          el.html(el.html()+' (GDP - '+gdpData[code]+')');
         }
       });
     });

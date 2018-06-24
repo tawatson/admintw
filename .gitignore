@@ -1,4 +1,4 @@
 config.php
 .htaccess
 *.p12
-
+composer.lock
