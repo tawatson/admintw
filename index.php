@@ -29,7 +29,7 @@ $prevParams = array(
 );
 $analyticsData = $ganalytics->query($prevParams);
 $prevVisits = $analyticsData['totalsForAllResults']['ga:sessions'];
-$diffVisits = $numVisits - $prevVisits['totalsForAllResults']['ga:sessions'];
+$diffVisits = $numVisits - $prevVisits;
 
 ?>
 <!DOCTYPE html>
