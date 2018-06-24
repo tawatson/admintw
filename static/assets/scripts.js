@@ -3,7 +3,7 @@ $(function() {
   $(".repoUpdate").click(function() {
      repoid = "#repo-"+$(this).data("repo");
       $(repoid).html("<i class='fa fa-refresh fa-spin'></i>");
-      $.post( "/classes/ajax.php", { action: "git_pull", repo: $(this).data("repo")},function(data) {
+      $.post( "ajax.php", { action: "git_pull", repo: $(this).data("repo")},function(data) {
         if(data) {
           $(repoid).removeClass("table-warning");
           $(repoid).addClass("table-success");
