@@ -33,14 +33,13 @@ $diffVisits = $numVisits - $prevVisits;
 
 
 // COUNTRY DATA
-
 $countryParams = array(
   'metrics' => 'ga:visits',
   'dimensions' => 'ga:country',
   'sort' => '-ga:visits',
   'max-results' => 30,
 );
-$countryvisits = $ganalytics->query($params);
+$countryvisits = $ganalytics->query($countryParams);
 $jvmData = Array();
 
 foreach ($countryvisits['rows'] as $row) {
