@@ -693,6 +693,7 @@ foreach ($countryvisits['rows'] as $row) {
   <script type="text/javascript" src="static/vendor.js"></script>
   <script type="text/javascript" src="static/bundle.js"></script>
   <script type="text/javascript" src="static/assets/scripts.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/jquery-jvectormap.js"></script>
   <script>
       $(function(){
       $('#world-map-marker').vectorMap({
