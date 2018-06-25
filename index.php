@@ -364,7 +364,7 @@ foreach ($countryvisits['rows'] as $row) {
                       <div class="layer w-100 mB-10">
                         <h6 class="lh-1">Site Visits</h6></div>
                       <div class="layer w-100">
-                        <div id="world-map-marker"></div>
+                        <div id="world-map-marker" style="height:440px;"></div>
                       </div>
                     </div>
                   </div>
