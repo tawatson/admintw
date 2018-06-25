@@ -17,25 +17,33 @@ $userInfo = $db->single();
 $db->query("SELECT * FROM wa_repos");
 $repos = $db->resultSet();
 
+$ganalytics->setAccountId('ga:150420384');
 //GANALYTICS SITE VISITS
 $params = array(
-	'metrics' => 'ga:sessions',
+	'metrics' => 'ga:visits',
 	'dimensions' => 'ga:date'
 );
 $visits = $ganalytics->query($params);
-$numVisits = $visits['totalsForAllResults']['ga:sessions'];
+$numVisits = $visits['totalsForAllResults']['ga:visits'];
 
 $prevParams = array(
   'start-date' => date('Y-m-d', strtotime('-2 months')),
   'end-date' => date('Y-m-d', strtotime('-1 month')),
-  'metrics' => 'ga:sessions',
+  'metrics' => 'ga:visits',
   'dimensions' => 'ga:date'
 );
 $analyticsData = $ganalytics->query($prevParams);
-$prevVisits = $analyticsData['totalsForAllResults']['ga:sessions'];
+$prevVisits = $analyticsData['totalsForAllResults']['ga:visits'];
 $diffVisits = $numVisits - $prevVisits;
 
-$ganalytics->setAccountId('ga:150420384');
+$params['metrics'] = "ga:pageviews";
+$pageviews = $ganalytics->query($params);
+$numPageViews = $pageviews['totalsForAllResults']['ga:pageviews'];
+
+$prevParams['metrics'] = "ga:pageviews";
+$prevPageViews = $ganalytics->query($prevParams);
+$diffPageViews = $numPageViews - $prevPageViews['totalsForAllResults']['ga:pageviews'];
+
 
 // COUNTRY DATA
 $countryParams = array(
@@ -225,7 +233,7 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Total Visits</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"><? echo $prevVisits; ?></div>
+                        <div class="peer peer-greed"><h4><? echo $prevVisits; ?></h4></div>
                         <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"><? echo $diffVisits;?> change</span></div>
                       </div>
                     </div>
@@ -237,8 +245,8 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Total Page Views</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed">XXX </div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">-7%</span></div>
+                        <div class="peer peer-greed"><? echo $numPageViews;?></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"><? echo $diffPageViews;?> change</span></div>
                       </div>
                     </div>
                   </div>
