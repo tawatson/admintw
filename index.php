@@ -374,39 +374,16 @@ foreach ($countryvisits['rows'] as $row) {
                         <div class="layers">
                           <div class="layer w-100">
                             <h5 class="mB-5"><? echo $jvmData['AU'];?></h5><small class="fw-600 c-grey-700">Visitors From Australia</small> <span class="pull-right c-grey-600 fsz-sm">50%</span>
-                            <div class="progress mT-10">
-                              <div class="progress-bar bgc-deep-purple-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%"><span class="sr-only">50% Complete</span></div>
-                            </div>
                           </div>
                           <div class="layer w-100 mT-15">
                             <h5 class="mB-5"><? echo $jvmData['US'];?></h5><small class="fw-600 c-grey-700">Visitors From United States</small> <span class="pull-right c-grey-600 fsz-sm">80%</span>
-                            <div class="progress mT-10">
-                              <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%"><span class="sr-only">80% Complete</span></div>
-                            </div>
                           </div>
                           <div class="layer w-100 mT-15">
                             <h5 class="mB-5"><? echo $jvmData['GB'];?></h5><small class="fw-600 c-grey-700">Visitors From United Kingdom</small> <span class="pull-right c-grey-600 fsz-sm">40%</span>
-                            <div class="progress mT-10">
-                              <div class="progress-bar bgc-light-blue-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:40%"><span class="sr-only">40% Complete</span></div>
-                            </div>
                           </div>
                           <div class="layer w-100 mT-15">
                             <h5 class="mB-5"><? echo $jvmData['IN'];?></h5><small class="fw-600 c-grey-700">Visitors From India</small> <span class="pull-right c-grey-600 fsz-sm">90%</span>
-                            <div class="progress mT-10">
-                              <div class="progress-bar bgc-blue-grey-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:90%"><span class="sr-only">90% Complete</span></div>
-                            </div>
                           </div>
-                        </div>
-                        <div class="peers pT-20 mT-20 bdT fxw-nw@lg+ jc-sb ta-c gap-10">
-                          <div class="peer">
-                            <div class="easy-pie-chart" data-size="80" data-percent="75" data-bar-color="#f44336"><span></span></div>
-                            <h6 class="fsz-sm">New Users</h6></div>
-                          <div class="peer">
-                            <div class="easy-pie-chart" data-size="80" data-percent="50" data-bar-color="#2196f3"><span></span></div>
-                            <h6 class="fsz-sm">New Purchases</h6></div>
-                          <div class="peer">
-                            <div class="easy-pie-chart" data-size="80" data-percent="90" data-bar-color="#ff9800"><span></span></div>
-                            <h6 class="fsz-sm">Bounce Rate</h6></div>
                         </div>
                       </div>
                     </div>
@@ -702,7 +679,7 @@ foreach ($countryvisits['rows'] as $row) {
         series: {
           regions: [{
             values: <? echo json_encode($jvmData);?>,
-            scale: ['#C8EEFF', '#0071A4'],
+            scale: ['#e5dada', '#d80606'],
             normalizeFunction: 'polynomial'
           }]
         },
