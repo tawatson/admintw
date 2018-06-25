@@ -333,7 +333,7 @@ foreach ($countryvisits['rows'] as $row) {
                 <div class="layers">
                   <div class="layer w-100 pX-20 pT-20">
                     <h6 class="lh-1">Software Status <a class="pull-right refreshRepos"><i class="fa fa-refresh"></i></a></h6></div>
-                  <div class="layer bdT p-20 w-100">
+                  <div class="layer p-20 w-100">
                     <table class="table table-hover">
                       <tr>
                         <th>Repo</th>
