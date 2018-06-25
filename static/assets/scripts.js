@@ -24,7 +24,7 @@ $(function() {
 
     $(".refreshRepos").click(function(){
       $(".refreshRepos .fa-refresh").toggleClass("fa-spin");
-      $("table.table-hover").load("/ table.table-hover", function(){$.getScript("/static/assets/scripts.js").done(function(){$(".refreshRepos .fa-refresh").toggleClass("fa-spin");});});
+      $("table.table-hover").parent().load("/ table.table-hover", function(){$.getScript("/static/assets/scripts.js").done(function(){$(".refreshRepos .fa-refresh").toggleClass("fa-spin");});});
 
     });
 
