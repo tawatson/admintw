@@ -676,6 +676,7 @@ foreach ($countryvisits['rows'] as $row) {
       $(function(){
       $('#world-map-marker').vectorMap({
         map: 'world_mill',
+        regionStyle: { initial: { fill: '#EEEEEE' } },
         series: {
           regions: [{
             values: <? echo json_encode($jvmData);?>,
