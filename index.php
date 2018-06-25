@@ -364,7 +364,7 @@ foreach ($countryvisits['rows'] as $row) {
                       <div class="layer w-100 mB-10">
                         <h6 class="lh-1">Site Visits</h6></div>
                       <div class="layer w-100">
-                        <div id="world-map-marker" style="height:440px;"></div>
+                        <div id="world-map-marker" style="height:440px;width:100%;"></div>
                       </div>
                     </div>
                   </div>
@@ -373,25 +373,25 @@ foreach ($countryvisits['rows'] as $row) {
                       <div class="layer w-100">
                         <div class="layers">
                           <div class="layer w-100">
-                            <h5 class="mB-5">100k</h5><small class="fw-600 c-grey-700">Visitors From USA</small> <span class="pull-right c-grey-600 fsz-sm">50%</span>
+                            <h5 class="mB-5"><? echo $jvmData['AU'];?></h5><small class="fw-600 c-grey-700">Visitors From Australia</small> <span class="pull-right c-grey-600 fsz-sm">50%</span>
                             <div class="progress mT-10">
                               <div class="progress-bar bgc-deep-purple-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%"><span class="sr-only">50% Complete</span></div>
                             </div>
                           </div>
                           <div class="layer w-100 mT-15">
-                            <h5 class="mB-5">1M</h5><small class="fw-600 c-grey-700">Visitors From Europe</small> <span class="pull-right c-grey-600 fsz-sm">80%</span>
+                            <h5 class="mB-5"><? echo $jvmData['US'];?></h5><small class="fw-600 c-grey-700">Visitors From United States</small> <span class="pull-right c-grey-600 fsz-sm">80%</span>
                             <div class="progress mT-10">
                               <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%"><span class="sr-only">80% Complete</span></div>
                             </div>
                           </div>
                           <div class="layer w-100 mT-15">
-                            <h5 class="mB-5">450k</h5><small class="fw-600 c-grey-700">Visitors From Australia</small> <span class="pull-right c-grey-600 fsz-sm">40%</span>
+                            <h5 class="mB-5"><? echo $jvmData['UK'];?></h5><small class="fw-600 c-grey-700">Visitors From United Kingdom</small> <span class="pull-right c-grey-600 fsz-sm">40%</span>
                             <div class="progress mT-10">
                               <div class="progress-bar bgc-light-blue-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:40%"><span class="sr-only">40% Complete</span></div>
                             </div>
                           </div>
                           <div class="layer w-100 mT-15">
-                            <h5 class="mB-5">1B</h5><small class="fw-600 c-grey-700">Visitors From India</small> <span class="pull-right c-grey-600 fsz-sm">90%</span>
+                            <h5 class="mB-5"><? echo $jvmData['IN'];?></h5><small class="fw-600 c-grey-700">Visitors From India</small> <span class="pull-right c-grey-600 fsz-sm">90%</span>
                             <div class="progress mT-10">
                               <div class="progress-bar bgc-blue-grey-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:90%"><span class="sr-only">90% Complete</span></div>
                             </div>
