@@ -541,7 +541,11 @@ foreach ($countryvisits['rows'] as $row) {
         },
         backgroundColor: '#FFFFFF',
         onRegionTipShow: function(event, label, code){
-       $(label).text($(label).text() + " (" + countryData[code] + ")");
+          if (countryData[code] != null) {
+             $(label).text($(label).text() + ": " + countryData[code]);
+          } else {
+            $(label).text($(label).text() + ": 0");
+          }
         }
       });
     });
