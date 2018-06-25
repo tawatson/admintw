@@ -22,5 +22,10 @@ $(function() {
       });
     });
 
+    $(".refreshRepos").click(function(){
+      $("table.table-hover").load("/ table.table-hover", function(){$.getScript("/static/assets/scripts.js").done(function(){console.log("Script Loaded")});});
+
+    });
+
 
 });
