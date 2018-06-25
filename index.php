@@ -63,9 +63,9 @@ $diffBounceRate = $bounceRate - $prevBounceData['totalsForAllResults']['ga:bounc
 
 // COUNTRY DATA
 $countryParams = array(
-  'metrics' => 'ga:visits',
+  'metrics' => 'ga:pageviews',
   'dimensions' => 'ga:country',
-  'sort' => '-ga:visits',
+  'sort' => '-ga:pageviews',
   'max-results' => 30,
 );
 $countryvisits = $ganalytics->query($countryParams);
