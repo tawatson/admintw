@@ -155,7 +155,7 @@ foreach ($countryvisits['rows'] as $row) {
         <div class="sidebar-logo">
           <div class="peers ai-c fxw-nw">
             <div class="peer peer-greed">
-              <a class="sidebar-link td-n" href="index.html">
+              <a class="sidebar-link td-n" href="/">
                 <div class="peers ai-c fxw-nw">
                   <div class="peer">
                     <div class="logo"><img src="static/assets/static/images/logo.png" alt="" style="width:100%; padding: 10px;"></div>
