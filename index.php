@@ -385,7 +385,7 @@ foreach ($countryvisits['rows'] as $row) {
                             </div>
                           </div>
                           <div class="layer w-100 mT-15">
-                            <h5 class="mB-5"><? echo $jvmData['UK'];?></h5><small class="fw-600 c-grey-700">Visitors From United Kingdom</small> <span class="pull-right c-grey-600 fsz-sm">40%</span>
+                            <h5 class="mB-5"><? echo $jvmData['GB'];?></h5><small class="fw-600 c-grey-700">Visitors From United Kingdom</small> <span class="pull-right c-grey-600 fsz-sm">40%</span>
                             <div class="progress mT-10">
                               <div class="progress-bar bgc-light-blue-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:40%"><span class="sr-only">40% Complete</span></div>
                             </div>
