@@ -540,7 +540,7 @@ foreach ($countryvisits['rows'] as $row) {
           }]
         },
         backgroundColor: '#FFFFFF',
-        onLabelShow: function(event, label, code){
+        onRegionTipShow: function(event, label, code){
        $(label).text($(label).text() + " (" + countryData[code] + ")");
         }
       });
