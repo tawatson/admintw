@@ -534,7 +534,7 @@ foreach ($countryvisits['rows'] as $row) {
         regionStyle: { initial: { fill: '#EEEEEE' } },
         series: {
           regions: [{
-            values: ,
+            values: countryData,
             scale: ['#e5dada', '#d80606'],
             normalizeFunction: 'polynomial'
           }]
