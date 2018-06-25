@@ -285,8 +285,8 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Bounce Rate</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"><h4><? echo $bounceRate;?></h4></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500"><? echo $diffBounceRate;?> change</span></div>
+                        <div class="peer peer-greed"><h4><? echo round($bounceRate);?>%</h4></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500"><? echo round($diffBounceRate;)?>% change</span></div>
                       </div>
                     </div>
                   </div>
