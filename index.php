@@ -541,7 +541,7 @@ foreach ($countryvisits['rows'] as $row) {
         },
         backgroundColor: '#FFFFFF',
         onLabelShow: function(event, label, code){
-       label.text(label.text() + " (" + countryData[code] + ")");
+       $(label).text($(label).text() + " (" + countryData[code] + ")");
         }
       });
     });
