@@ -328,7 +328,7 @@ foreach ($countryvisits['rows'] as $row) {
                 </div>
               </div>
             </div>
-            <div class="masonry-item col-md-6">
+            <div class="masonry-item col-md-12">
               <div class="bd bgc-white">
                 <div class="layers">
                   <div class="layer w-100 pX-20 pT-20">
