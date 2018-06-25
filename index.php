@@ -44,6 +44,22 @@ $prevParams['metrics'] = "ga:pageviews";
 $prevPageViews = $ganalytics->query($prevParams);
 $diffPageViews = $numPageViews - $prevPageViews['totalsForAllResults']['ga:pageviews'];
 
+$params['metrics'] = "ga:uniquePageviews";
+$uniqueData = $ganalytics->query($params);
+$uniqueViews = $uniqueData['totalsForAllResults']['ga:uniquePageviews'];
+
+$prevParams['metrics'] = "ga:uniquePageviews";
+$prevUniqueViews = $ganalytics->query($prevParams);
+$diffUniqueViews = $uniqueViews - $prevUniqueViews['totalsForAllResults']['ga:uniquePageviews'];
+
+$params['metrics'] = "ga:bounceRate";
+$bounceData = $ganalytics->query($params);
+$bounceRate = $bounceData['totalsForAllResults']['ga:bounceRate'];
+
+$prevParams['metrics'] = "ga:bounceRate";
+$prevBounceData = $ganalytics->query($prevParams);
+$diffBounceRate = $bounceRate - $prevBounceData['totalsForAllResults']['ga:bounceRate'];
+
 
 // COUNTRY DATA
 $countryParams = array(
@@ -245,7 +261,7 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Total Page Views</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"><? echo $numPageViews;?></div>
+                        <div class="peer peer-greed"><h4><? echo $numPageViews;?></h4></div>
                         <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"><? echo $diffPageViews;?> change</span></div>
                       </div>
                     </div>
@@ -257,8 +273,8 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Unique Visitor</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"><span id="sparklinedash3"></span></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">~12%</span></div>
+                        <div class="peer peer-greed"><h4><? echo $uniqueViews;?></h4></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500"><? echo $diffUniqueViews;?> change</span></div>
                       </div>
                     </div>
                   </div>
@@ -269,8 +285,8 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Bounce Rate</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"><span id="sparklinedash4"></span></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">33%</span></div>
+                        <div class="peer peer-greed"><h4><? echo $bounceRate;?></h4></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500"><? echo $diffBounceRate;?> change</span></div>
                       </div>
                     </div>
                   </div>
