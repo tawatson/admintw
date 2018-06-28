@@ -50,12 +50,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                               setcookie('remember_me', $_POST['email'], $year);
                               session_start();
                               $_SESSION['username'] = $username;
-                              header("location: index.php");
+                              header("location: /");
                             } else {
 
                             session_start();
                             $_SESSION['username'] = $username;
-                            header("location: index.php");
+                            header("location: /");
                           }
                         } else{
                             // Display an error message if password is not valid
