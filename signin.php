@@ -169,7 +169,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <h4 class="fw-300 c-grey-900 mB-40">Login</h4>
       <? if(isset($username_err) || isset($password_err)){echo $username_err; echo $password_err;}?>
       <form method="post">
-        <div class="form-group"><label class="text-normal text-dark">Email</label> <input type="email" name="email" class="form-control" placeholder="name@email.com" value="<?php echo $_COOKIE['remember_me']; ?>"></div>
+        <div class="form-group"><label class="text-normal text-dark">Email</label> <input type="email" name="email" class="form-control" placeholder="name@email.com" value="<?php if(isset($_COOKIE['remember_me'])){echo $_COOKIE['remember_me'];} ?>"></div>
         <div class="form-group"><label class="text-normal text-dark">Password</label> <input type="password" name="password" class="form-control" placeholder="Password"></div>
         <div class="form-group">
           <div class="peers ai-c jc-sb fxw-nw">
