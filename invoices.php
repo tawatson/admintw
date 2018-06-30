@@ -180,7 +180,7 @@ $userInfo = $db->single();
           <div id="mainContent">
             <div class="container-fluid">
               <h3 class="c-grey-900 mT-10 mB-30">Invoices
-                <a class="btn btn-primary c-white pull-right" data-action="newInvoice"><i class="ti-plus"></i> New Invoice</a>
+                <a class="btn btn-primary c-white pull-right" data-action="newInvoice" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="ti-plus"></i> New Invoice</a>
               </h3>
               <div class="row">
                 <div class="col-md-12">
@@ -212,6 +212,14 @@ $userInfo = $db->single();
           </div>
         </main>
         <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2018 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. Backend and related code is by Terrence Watson. All rights reserved.</span></footer>
+      </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="newInvoice" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          ...
+        </div>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
