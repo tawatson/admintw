@@ -179,7 +179,9 @@ $userInfo = $db->single();
         <main class="main-content bgc-grey-100">
           <div id="mainContent">
             <div class="container-fluid">
-              <h4 class="c-grey-900 mT-10 mB-30">Invoices</h4>
+              <h3 class="c-grey-900 mT-10 mB-30">Invoices
+                <a class="btn btn-primary c-white pull-right" data-action="newInvoice"><i class="ti-plus"></i> New Invoice</a>
+              </h3>
               <div class="row">
                 <div class="col-md-12">
                   <div class="bgc-white bd bdrs-3 p-20 mB-20">
@@ -213,6 +215,7 @@ $userInfo = $db->single();
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="static/modal.js"></script>
     <script type="text/javascript" src="static/vendor.js"></script>
     <script type="text/javascript" src="static/bundle.js"></script>
     <script type="text/javascript" src="static/assets/scripts.js"></script>
