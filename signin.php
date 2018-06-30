@@ -50,12 +50,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                               setcookie('remember_me', $_POST['email'], $year);
                               session_start();
                               $_SESSION['username'] = $username;
-                              header("location: /");
+                              if(isset($_POST['next'])){
+                                header("Location: ".$_POST['next']);
+                              } else {
+                                  header("Location: /");
+                              }
                             } else {
 
                             session_start();
                             $_SESSION['username'] = $username;
-                            header("location: /");
+                            if(isset($_POST['next'])){
+                              header("Location: ".$_POST['next']);
+                            } else {
+                                header("Location: /");
+                            }
                           }
                         } else{
                             // Display an error message if password is not valid
@@ -80,7 +88,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 } else {
   session_start();
   if(isset($_SESSION['username'])){
-    header("Location: index.php");
+    if(isset($_POST['next'])){
+      header("Location: ".$_POST['next']);
+    } else {
+        header("Location: /");
+    }
+
   }
 }
 ?>
@@ -169,6 +182,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <h4 class="fw-300 c-grey-900 mB-40">Login</h4>
       <? if(isset($username_err) || isset($password_err)){echo $username_err; echo $password_err;}?>
       <form method="post">
+        <?
+          if(isset($_GET['next'])){
+        ?>
+        <input type="hidden" name="next" value="<? echo $_GET['next'];?>"/>
+        <?}?>
         <div class="form-group"><label class="text-normal text-dark">Email</label> <input type="email" name="email" class="form-control" placeholder="name@email.com" value="<?php if(isset($_COOKIE['remember_me'])){echo $_COOKIE['remember_me'];} ?>"></div>
         <div class="form-group"><label class="text-normal text-dark">Password</label> <input type="password" name="password" class="form-control" placeholder="Password"></div>
         <div class="form-group">
