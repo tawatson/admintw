@@ -177,16 +177,38 @@ $userInfo = $db->single();
           </div>
         </div>
         <main class="main-content bgc-grey-100">
-          <div id="mainContent">
+          <div id="mainContent" class="bd bdc-grey-300">
             <div class="container-fluid bgc-white">
-              <h3 class="c-grey-900 mT-10 mB-30">Invoice #2018XXX
+              <h3 class="c-grey-900 pT-15 mB-30">Invoice #2018XXX
                 <a class="btn btn-danger c-white pull-right"><i class="ti-pencil-alt"></i> Edit Invoice</a>
               </h3>
+              <div class="row mB-30">
+                <div class="col-md-3 mL-30">
+                  <p><strong>Client Name</strong> (Att: Contact Name)<br> Address Line 1<br> Address Line 2<br> Suburb, ACT, 2600</p>
+                </div>
+                <div class="col-md-3 ml-auto mR-30 text-right">
+                  <p><strong>Issue Date: </strong> XX/XX/XXXX</p>
+                  <p><strong>Due Date: </strong> XX/XX/XXXX</p>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="bd bdrs-3 p-20 mB-20">
+                  <div class="bd bdrs-3 mB-20">
                     <table class="table">
-
+                      <tbody>
+                        <tr>
+                          <th>Item Description</th>
+                          <th>Item Cost</th>
+                          <th>Qty</th>
+                          <th>Item Total</th>
+                        </tr>
+                        <tr>
+                          <td>Lorem ipsum dolor sit amet.</td>
+                          <td>$XX</td>
+                          <td>X</td>
+                          <td>$XX.00</td>
+                        </tr>
+                      </tbody>
                     </table>
                   </div>
                 </div>
