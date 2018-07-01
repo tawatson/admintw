@@ -592,7 +592,7 @@ webpackJsonp([0], {
       n = (a.n(r), a(235));
     a.n(n),
       function() {
-        r("#dataTable").DataTable()
+        r(".dataTable").DataTable()
       }()
   },
   236: function(t, i, a) {
