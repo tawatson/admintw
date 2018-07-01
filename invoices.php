@@ -231,13 +231,13 @@ $userInfo = $db->single();
                 <div class="form-group col-md-6"><label class="fw-500">Issue Date</label>
                   <div class="timepicker-input input-icon form-group">
                     <div class="input-group">
-                      <div class="input-group-addon bgc-white bd bdwR-0"><i class="ti-calendar"></i></div><input type="text" class="form-control bdc-grey-200 start-date" data-provide="datepicker" name="issueDate"></div>
+                      <div class="input-group-addon bgc-white bd bdwR-0"><i class="ti-calendar"></i></div><input type="text" class="form-control bdc-grey-200 date" data-provide="datepicker" name="issueDate"></div>
                   </div>
                 </div>
                 <div class="form-group col-md-6"><label class="fw-500">Due Date</label>
                   <div class="timepicker-input input-icon form-group">
                     <div class="input-group">
-                      <div class="input-group-addon bgc-white bd bdwR-0"><i class="ti-calendar"></i></div><input type="text" class="form-control bdc-grey-200 start-date"  data-provide="datepicker" name="dueDate"></div>
+                      <div class="input-group-addon bgc-white bd bdwR-0"><i class="ti-calendar"></i></div><input type="text" class="form-control bdc-grey-200 date"  data-provide="datepicker" name="dueDate"></div>
                   </div>
                 </div>
               </div>
