@@ -219,17 +219,33 @@ $userInfo = $db->single();
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <h5 class="modal-title"><i class="ti-money"></i> New Invoice</h5>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+            <form id="invoiceForm">
+              <div class="form-group">
+                <label for="client">Client</label>
+                <input type="text" class="form-control" id="client" name="client" placeholder="Start typing to search...">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6"><label class="fw-500">Issue Date</label>
+                  <div class="timepicker-input input-icon form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon bgc-white bd bdwR-0"><i class="ti-calendar"></i></div><input type="text" class="form-control bdc-grey-200 start-date" data-provide="datepicker" name="issueDate"></div>
+                  </div>
+                </div>
+                <div class="form-group col-md-6"><label class="fw-500">Due Date</label>
+                  <div class="timepicker-input input-icon form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon bgc-white bd bdwR-0"><i class="ti-calendar"></i></div><input type="text" class="form-control bdc-grey-200 start-date"  data-provide="datepicker" name="dueDate"></div>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Create Invoice</button>
+            <button type="reset" form="invoiceForm" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           </div>
         </div>
       </div>
