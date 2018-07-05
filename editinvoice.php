@@ -216,7 +216,7 @@ $userInfo = $db->single();
         </td>
       </tr>
       <!-- This is our clonable table line -->
-      <tr>
+      <tr class="d-none">
         <td contenteditable="true">Lorem Ipsum</td>
         <td contenteditable="true" class="itemCost">0.00</td>
         <td contenteditable="true" class="itemQty">0</td>
