@@ -209,8 +209,8 @@ $items = $db->resultSet();
                     <? if(!empty($clientInfo['address2'])){ echo $clientInfo['address2'];} echo "<br/>".$clientInfo['suburb'].", ".$clientInfo['state'].", ".$clientInfo['postcode'];?></p>
                 </div>
                 <div class="col-md-3 ml-auto mR-30 text-right">
-                  <p><strong>Issue Date: </strong> <? echo date('M jS, Y', strtotime($clientInfo['issue_date']));?></p>
-                  <p><strong>Due Date: </strong> <? echo date('M jS, Y', strtotime($clientInfo['due_date']));?></p>
+                  <p><strong>Issue Date: </strong> <? echo date('M jS, Y', strtotime($invoiceInfo['issue_date']));?></p>
+                  <p><strong>Due Date: </strong> <? echo date('M jS, Y', strtotime($invoiceInfo['due_date']));?></p>
                 </div>
               </div>
               <div class="row">
