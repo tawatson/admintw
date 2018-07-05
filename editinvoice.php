@@ -232,7 +232,7 @@ $items = $db->resultSet();
             <td contenteditable="true"><? echo $item['description'];?></td>
             <td contenteditable="true" class="itemCost"><? echo $item['cost'];?></td>
             <td contenteditable="true" class="itemQty"><? echo $item['qty'];?></td>
-            <td class="totalItemCost"><? echo "$".$item['cost'] * $item['qty'];?></td>
+            <td class="totalItemCost"><? // echo "$".$item['cost'] * $item['qty'];?></td>
             <td>
               <span class="table-remove ti-close"></span>
               <span class="table-up ti-arrow-up"></span>
