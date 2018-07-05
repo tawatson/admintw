@@ -196,13 +196,42 @@ $userInfo = $db->single();
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">ID</th>
-                          <td>CLIENT</td>
-                          <td>AMOUNT</td>
-                          <td>ISSUE</td>
-                          <td>DUE</td>
+                        <?
+                          // Load Invoices
+                          $db->query("SELECT * FROM wa_invoices");
+                          $invoices = $db->resultSet();
+                          if(empty($invoices)){
+                            echo '<td colspan="5" style="text-align:center"><h3>No invoices to display...</h3></td>';
+                          } else {
+                            foreach ($invoices as $invoice) {
+                              // Load Client Name
+                              $db->query('SELECT name FROM wa_clients WHERE id = :id');
+                              $db->bind(":id", $invoice['client_id']);
+                              $client = $db->single();
+
+                              // Load Invoice Cost
+                              $db->query("SELECT cost, qty FROM wa_invoice_items WHERE invoice_id = :id");
+                              $db->bind(":id", $invoice['id']);
+                              $invoice['items'] = $db->resultSet();
+
+                              $cost = array();
+
+                              foreach ($invoice['items'] as $item) {
+                                $itemCost = $item['cost'] * $item['qty'];
+                                $cost[] = $itemCost;
+                              }
+                        ?>
+                        <tr <? echo ($invoice['paid'] == 1 ? 'class="table-success"' : "" )?> >
+                          <th scope="row"><? echo $invoice['id'];?></th>
+                          <td<? echo $client['name'];?></td>
+                          <td><? echo array_sum($cost);?></td>
+                          <td><? echo date('M jS, Y', $invoice['issue_date']);?></td>
+                          <td <?echo ($invoice['paid'] == 0 ? (date($invoice['due_date']) < date('Y-m-d H:i:s') ? 'class="table-danger"' : "" ) : ""))?>><? echo date('M jS, Y', $invoice['due_date']);?></td>
+
                         </tr>
+                            <?
+                          }
+                        }?>
                       </tbody>
                     </table>
                   </div>
