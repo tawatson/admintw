@@ -22,6 +22,7 @@ $userInfo = $db->single();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Invoices</title>
+    <link rel="stylesheet" href="static/jquery-ui.min.css">
     <style>
       #loader {
         transition: all .3s ease-in-out;
