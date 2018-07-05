@@ -7,11 +7,11 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: signin.php?next=".urlencode($_SERVER['REQUEST_URI']));
   exit;
 }
-
+/*
 if(!isset($_GET['id'])){
   header("location: /invoices.php");
   exit;
-}
+}*/
 
 require "config.php";
 
