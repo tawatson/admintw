@@ -206,9 +206,9 @@ $userInfo = $db->single();
       </tr>
       <tr>
         <td contenteditable="true">Lorem Ipsum</td>
-        <td contenteditable="true">0.00</td>
-        <td contenteditable="true">0</td>
-        <td class="itemCost">$0.00</td>
+        <td contenteditable="true" class="itemCost">0.00</td>
+        <td contenteditable="true" class="itemQty">0</td>
+        <td class="totalItemCost">$0.00</td>
         <td>
           <span class="table-remove ti-close"></span>
           <span class="table-up ti-arrow-up"></span>
@@ -216,7 +216,7 @@ $userInfo = $db->single();
         </td>
       </tr>
       <!-- This is our clonable table line -->
-      <tr class="hide">
+      <tr class="hide" aria-hidden="true">
         <td contenteditable="true">Lorem Ipsum</td>
         <td contenteditable="true">0.00</td>
         <td contenteditable="true">0</td>

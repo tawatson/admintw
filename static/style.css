@@ -1609,7 +1609,7 @@ a.fc-more:hover {
 .table-editable {
   position: relative;
 }
-.table-editable .glyphicon {
+.table-editable [class*=ti] {
   font-size: 20px;
 }
 
@@ -1634,7 +1634,7 @@ a.fc-more:hover {
   cursor: pointer;
   position: absolute;
   top: 8px;
-  right: 0;
+  right: 8px;
 }
 .table-add:hover {
   color: #0b0;
