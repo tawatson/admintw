@@ -284,6 +284,7 @@ $userInfo = $db->single();
     <script type="text/javascript" src="static/vendor.js"></script>
     <script type="text/javascript" src="static/bundle.js"></script>
     <script type="text/javascript" src="static/assets/scripts.js"></script>
+    <script type="text/javascript" src="static/jquery-ui.min.js"></script>
     <script>
       // AUTOCOMPLETE FROM DATABASE
       $(function() {
