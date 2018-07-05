@@ -288,7 +288,7 @@ $userInfo = $db->single();
     <script>
       // AUTOCOMPLETE FROM DATABASE
       $(function() {
-            $( "#hint" ).autocomplete({
+            $( "#client" ).autocomplete({
                 source: function( request, response ) {
                     $.ajax({
                         url: "ajax.php",
