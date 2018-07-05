@@ -194,22 +194,41 @@ $userInfo = $db->single();
               <div class="row">
                 <div class="col-md-12">
                   <div class="bd bdrs-3 mB-20">
-                    <table class="table">
-                      <tbody>
-                        <tr>
-                          <th>Item Description</th>
-                          <th>Item Cost</th>
-                          <th>Qty</th>
-                          <th>Item Total</th>
-                        </tr>
-                        <tr>
-                          <td>Lorem ipsum dolor sit amet.</td>
-                          <td>$XX</td>
-                          <td>X</td>
-                          <td>$XX.00</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div id="table" class="table-editable">
+    <span class="table-add glyphicon glyphicon-plus"></span>
+    <table class="table">
+      <tr>
+        <th>Item Description</th>
+        <th>Item Cost</th>
+        <th>Qty</th>
+        <th>Item Total</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td contenteditable="true">Lorem Ipsum</td>
+        <td contenteditable="true">0.00</td>
+        <td contenteditable="true">0</td>
+        <td class="itemCost">$0.00</td>
+        <td>
+          <span class="table-remove ti-close"></span>
+          <span class="table-up ti-arrow-up"></span>
+          <span class="table-down ti-arrow-down"></span>
+        </td>
+      </tr>
+      <!-- This is our clonable table line -->
+      <tr class="hide">
+        <td contenteditable="true">Lorem Ipsum</td>
+        <td contenteditable="true">0.00</td>
+        <td contenteditable="true">0</td>
+        <td class="itemCost">$0.00</td>
+        <td>
+          <span class="table-remove ti-close"></span>
+          <span class="table-up ti-arrow-up"></span>
+          <span class="table-down ti-arrow-down"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
                   </div>
                 </div>
               </div>
@@ -225,7 +244,60 @@ $userInfo = $db->single();
     <script type="text/javascript" src="static/vendor.js"></script>
     <script type="text/javascript" src="static/bundle.js"></script>
     <script type="text/javascript" src="static/assets/scripts.js"></script>
+    <script>
+    var $TABLE = $('#table');
 
+$('.table-add').click(function () {
+var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+$TABLE.find('table').append($clone);
+});
+
+$('.table-remove').click(function () {
+$(this).parents('tr').detach();
+});
+
+$('.table-up').click(function () {
+var $row = $(this).parents('tr');
+if ($row.index() === 1) return; // Don't go above the header
+$row.prev().before($row.get(0));
+});
+
+$('.table-down').click(function () {
+var $row = $(this).parents('tr');
+$row.next().after($row.get(0));
+});
+
+// A few jQuery helpers for exporting only
+jQuery.fn.pop = [].pop;
+jQuery.fn.shift = [].shift;
+
+/*$BTN.click(function () {
+var $rows = $TABLE.find('tr:not(:hidden)');
+var headers = [];
+var data = [];
+
+// Get the headers (add special header logic here)
+$($rows.shift()).find('th:not(:empty)').each(function () {
+  headers.push($(this).text().toLowerCase());
+});
+
+// Turn all existing rows into a loopable array
+$rows.each(function () {
+  var $td = $(this).find('td');
+  var h = {};
+
+  // Use the headers from earlier to name our hash keys
+  headers.forEach(function (header, i) {
+    h[header] = $td.eq(i).text();
+  });
+
+  data.push(h);
+});*/
+
+/*// Output the result
+$EXPORT.text(JSON.stringify(data));
+});*/
+    </script>
   </body>
 
   </html>
