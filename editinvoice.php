@@ -216,11 +216,11 @@ $userInfo = $db->single();
         </td>
       </tr>
       <!-- This is our clonable table line -->
-      <tr class="d-none" aria-hidden="true">
+      <tr>
         <td contenteditable="true">Lorem Ipsum</td>
-        <td contenteditable="true">0.00</td>
-        <td contenteditable="true">0</td>
-        <td class="itemCost">$0.00</td>
+        <td contenteditable="true" class="itemCost">0.00</td>
+        <td contenteditable="true" class="itemQty">0</td>
+        <td class="totalItemCost">$0.00</td>
         <td>
           <span class="table-remove ti-close"></span>
           <span class="table-up ti-arrow-up"></span>
@@ -244,12 +244,20 @@ $userInfo = $db->single();
     <script type="text/javascript" src="static/vendor.js"></script>
     <script type="text/javascript" src="static/bundle.js"></script>
     <script type="text/javascript" src="static/assets/scripts.js"></script>
+    <script type="text/javascript" src="static/jquery.formatCurrency-1.4.0.min.js"></script>
     <script>
+    $( ".itemCost:not(:hidden), .itemQty" ).keyup(function(event) {
+  $(this).siblings(".totalItemCost").text($(this).text() * $(this).siblings(".itemCost:not(:hidden), .itemQty").text()).formatCurrency();
+});
+
     var $TABLE = $('#table');
 
 $('.table-add').click(function () {
 var $clone = $TABLE.find('tr.d-none').clone(true).removeClass('d-none');
 $TABLE.find('table').append($clone);
+$( ".itemCost:not(:hidden), .itemQty" ).keyup(function(event) {
+  $(this).siblings(".totalItemCost").text($(this).text() * $(this).siblings(".itemCost:not(:hidden), .itemQty").text()).formatCurrency();
+});
 });
 
 $('.table-remove').click(function () {
