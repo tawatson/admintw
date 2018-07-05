@@ -308,7 +308,7 @@ $userInfo = $db->single();
         $(".createInvoice").click(function (){
           $.ajax({
               url: "ajax.php",
-              method: "post"
+              method: "post",
               data: $("#invoiceForm").serialize()+"&action=createInvoice",
               success: function( data ) {
                   window.location = "/editinvoice.php?id="+data;
