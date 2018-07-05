@@ -251,6 +251,7 @@ $userInfo = $db->single();
           </div>
           <div class="modal-body">
             <form id="invoiceForm">
+              <input type="hidden" name="action" value="createInvoice"/>
               <div class="form-group">
                 <label for="client">Client</label>
                 <input type="text" class="form-control" id="client" name="client" placeholder="Start typing to search...">
@@ -272,7 +273,7 @@ $userInfo = $db->single();
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Create Invoice</button>
+            <button type="submit" class="btn btn-primary">Create Invoice</button>
             <button type="reset" form="invoiceForm" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           </div>
         </div>
@@ -283,7 +284,25 @@ $userInfo = $db->single();
     <script type="text/javascript" src="static/vendor.js"></script>
     <script type="text/javascript" src="static/bundle.js"></script>
     <script type="text/javascript" src="static/assets/scripts.js"></script>
-
+    <script>
+      // AUTOCOMPLETE FROM DATABASE
+      $(function() {
+            $( "#hint" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "ajax.php",
+                        dataType: "jsonp",
+                        data: {
+                            q: request.term
+                        },
+                        success: function( data ) {
+                            response( data );
+                        }
+                    });
+                },
+            });
+        });
+    </script>
   </body>
 
   </html>
