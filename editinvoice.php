@@ -205,8 +205,8 @@ $items = $db->resultSet();
               </h3>
               <div class="row mB-30">
                 <div class="col-md-3 mL-30">
-                  <p><strong><? echo $clientInfo['name'];?></strong><? if(!empty($clientInfo['contact_name'])){ echo"(Att: ".$clientInfo['contact_name'].")";}?><br> <? echo $clientInfo['address1'];?><br>
-                    <? if(!empty($clientInfo['address2'])){ echo $clientInfo['address2'];} echo "<br/>".$clientInfo['suburb'].", ".$clientInfo['state'].", ".$clientInfo['postcode'];?></p>
+                  <p><strong><? echo $clientInfo['name'];?></strong><? if(!empty($clientInfo['contact_name'])){ echo"<br/>(Att: ".$clientInfo['contact_name'].")";}?><br> <? echo $clientInfo['address1'];?><br>
+                    <? if(!empty($clientInfo['address2'])){ echo $clientInfo['address2']."<br/>";} echo $clientInfo['suburb'].", ".$clientInfo['state'].", ".$clientInfo['postcode'];?></p>
                 </div>
                 <div class="col-md-3 ml-auto mR-30 text-right">
                   <p><strong>Issue Date: </strong> <? echo date('M jS, Y', strtotime($invoiceInfo['issue_date']));?></p>
@@ -220,6 +220,7 @@ $items = $db->resultSet();
     <span class="table-add ti-plus"></span>
     <table class="table">
       <tr>
+        <th>Item ID</th>
         <th>Item Description</th>
         <th>Item Cost</th>
         <th>Qty</th>
@@ -229,6 +230,7 @@ $items = $db->resultSet();
       <? if(!empty($items)){
         foreach ($items as $item) {?>
           <tr>
+            <td><? echo $item['id'];?></td>
             <td contenteditable="true"><? echo $item['description'];?></td>
             <td contenteditable="true" class="itemCost"><? echo $item['cost'];?></td>
             <td contenteditable="true" class="itemQty"><? echo $item['qty'];?></td>
@@ -242,7 +244,7 @@ $items = $db->resultSet();
       <?  }
     } else {?>
       <tr>
-        <td contenteditable="true" ></td>
+        <td contenteditable="true">Item Description</td>
         <td contenteditable="true" class="itemCost">0.00</td>
         <td contenteditable="true" class="itemQty">0</td>
         <td class="totalItemCost">$0.00</td>
