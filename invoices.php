@@ -275,7 +275,7 @@ $userInfo = $db->single();
             </form>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Create Invoice</button>
+            <button type="submit" class="btn btn-primary createInvoice">Create Invoice</button>
             <button type="reset" form="invoiceForm" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           </div>
         </div>
@@ -303,6 +303,18 @@ $userInfo = $db->single();
                     }
                 });
             },
+        });
+
+        $(".createInvoice").click(function (){
+          $.ajax({
+              url: "ajax.php",
+              method: "post"
+              data: $("#invoiceForm").serialize()+"&action=createInvoice",
+              success: function( data ) {
+                  window.location = "/editinvoice.php?id="+data;
+              }
+          });
+
         });
         });
     </script>

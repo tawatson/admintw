@@ -16,7 +16,22 @@ switch ($_SERVER['REQUEST_METHOD']) {
         // CREATE INSTANCE OF REPO CLASS
         $git = new Tawatson_gitHook($db, new GitRepository($repo['local_dir']),$repo['repo_name']);
         if($git->pull()){echo "1";};
-        break;
+    break;
+
+    case 'createInvoice':
+      $db->query("SELECT id from wa_clients WHERE name = :name");
+      $db->bind(":name", $_POST['client']);
+      $result = $db->single();
+
+      $db->query("INSERT INTO wa_invoices (client_id, issue_date, due_date) VALUES(:client, :issue_date, :due_date)");
+      $db->bind(":client",$result['id']);
+      $db->bind(":issue_date",date("Y-m-d H:i:s",$_POST['issueDate']));
+      $db->bind(":due_date",date("Y-m-d H:i:s",$_POST['dueDate']));
+      if($db->execute()){
+        echo $db->lastInsertId();
+      }
+
+      break;
 
     default:
       # code...
