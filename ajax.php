@@ -25,8 +25,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
       $db->query("INSERT INTO wa_invoices (client_id, issue_date, due_date) VALUES(:client, :issue_date, :due_date)");
       $db->bind(":client",$result['id']);
-      $db->bind(":issue_date",date("Y-m-d H:i:s",strtotime($_POST['issueDate'])));
-      $db->bind(":due_date",date("Y-m-d H:i:s",strtotime($_POST['dueDate'])));
+      $db->bind(":issue_date",date("Y-m-d H:i:s",strtotime(str_replace('/', '-',$_POST['issueDate']))));
+      $db->bind(":due_date",date("Y-m-d H:i:s",strtotime(str_replace('/', '-',$_POST['dueDate']))));
       if($db->execute()){
         echo $db->lastInsertId();
       }
