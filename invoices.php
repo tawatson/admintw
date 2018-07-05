@@ -294,6 +294,7 @@ $userInfo = $db->single();
             source: function( request, response ) {
                 $.ajax({
                     url: "ajax.php",
+                    dataType: "json",
                     data: {
                         q: request.term
                     },
