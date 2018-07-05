@@ -26,8 +26,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
     break;
 
     case 'GET':
-    $term=$_GET["q"];
-      $db->query("SELECT name FROM wa_clients WHERE name LIKE '%:term%'");
+    $term="%".$_GET["q"]."%";
+      $db->query("SELECT name FROM wa_clients WHERE name LIKE :term");
       $db->bind(":term", $term);
       $results = $db->resultSet();
 
