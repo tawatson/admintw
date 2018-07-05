@@ -252,7 +252,7 @@ $items = $db->resultSet();
           <span class="table-down ti-arrow-down"></span>
         </td>
       </tr>
-    <?}?>
+    <?}}?>
       <!-- This is our clonable table line -->
       <tr class="d-none">
         <td contenteditable="true">Lorem Ipsum</td>
