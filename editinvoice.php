@@ -25,7 +25,7 @@ $invoiceId = $_GET['id'];
 $db->query("SELECT * FROM wa_invoices WHERE id = :id");
 $db->bind(":id", $invoiceId);
 $invoiceInfo = $db->single();
-/*
+
 // Get Client info
 $db->query("SELECT * FROM wa_clients WHERE id = :id");
 $db->bind(":id", $invoiceInfo['client_id']);
@@ -34,7 +34,7 @@ $clientInfo = $db->single();
 // Get Current Invoice items
 $db->query("SELECT * FROM wa_invoice_items WHERE invoice_id = :id");
 $db->bind(":id", $invoiceId);
-$items = $db->resultSet();*/
+$items = $db->resultSet();
 ?>
   <!DOCTYPE html>
   <html>
@@ -226,7 +226,7 @@ $items = $db->resultSet();*/
         <th>Item Total</th>
         <th></th>
       </tr>
-      <? if($items){
+      <? if(!empty($items)){
         foreach ($items as $item) {?>
           <tr>
             <td contenteditable="true"><? echo $item['description'];?></td>
