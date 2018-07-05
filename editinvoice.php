@@ -21,7 +21,7 @@ $userInfo = $db->single();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Invoice #</title>
+    <title>Editing: Invoice #</title>
     <style>
       #loader {
         transition: all .3s ease-in-out;
@@ -180,7 +180,7 @@ $userInfo = $db->single();
           <div id="mainContent" class="bd bdc-grey-300">
             <div class="container-fluid bgc-white">
               <h3 class="c-grey-900 pT-15 mB-30">Invoice #2018XXX
-                <a class="btn btn-danger c-white pull-right"><i class="ti-pencil-alt"></i> Edit Invoice</a>
+                <a class="btn btn-success c-white pull-right"><i class="ti-pencil-alt"></i> Save Invoice</a>
               </h3>
               <div class="row mB-30">
                 <div class="col-md-3 mL-30">
@@ -189,7 +189,6 @@ $userInfo = $db->single();
                 <div class="col-md-3 ml-auto mR-30 text-right">
                   <p><strong>Issue Date: </strong> XX/XX/XXXX</p>
                   <p><strong>Due Date: </strong> XX/XX/XXXX</p>
-                  <h3>Total: <span class="d-ib bgc-red-50 p-10 bd bdc-red-500 c-red-900 bdrs-10em">$XXX.XX</span></h3>
                 </div>
               </div>
               <div class="row">
