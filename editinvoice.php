@@ -195,7 +195,7 @@ $userInfo = $db->single();
                 <div class="col-md-12">
                   <div class="bd bdrs-3 mB-20">
                     <div id="table" class="table-editable">
-    <span class="table-add glyphicon glyphicon-plus"></span>
+    <span class="table-add ti-plus"></span>
     <table class="table">
       <tr>
         <th>Item Description</th>
@@ -216,7 +216,7 @@ $userInfo = $db->single();
         </td>
       </tr>
       <!-- This is our clonable table line -->
-      <tr class="hide" aria-hidden="true">
+      <tr class="d-none" aria-hidden="true">
         <td contenteditable="true">Lorem Ipsum</td>
         <td contenteditable="true">0.00</td>
         <td contenteditable="true">0</td>
@@ -248,7 +248,7 @@ $userInfo = $db->single();
     var $TABLE = $('#table');
 
 $('.table-add').click(function () {
-var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+var $clone = $TABLE.find('tr.d-none').clone(true).removeClass('d-none');
 $TABLE.find('table').append($clone);
 });
 

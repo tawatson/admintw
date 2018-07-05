@@ -1633,8 +1633,8 @@ a.fc-more:hover {
   color: #070;
   cursor: pointer;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 13px;
+  right: 10px;
 }
 .table-add:hover {
   color: #0b0;
