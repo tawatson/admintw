@@ -290,20 +290,19 @@ $userInfo = $db->single();
     <script>
       // AUTOCOMPLETE FROM DATABASE
       $(function() {
-            $( "#client" ).autocomplete({
-                source: function( request, response ) {
-                    $.ajax({
-                        url: "ajax.php",
-                        dataType: "jsonp",
-                        data: {
-                            q: request.term
-                        },
-                        success: function( data ) {
-                            response( data );
-                        }
-                    });
-                },
-            });
+        $( "#client" ).autocomplete({
+            source: function( request, response ) {
+                $.ajax({
+                    url: "ajax.php",
+                    data: {
+                        q: request.term
+                    },
+                    success: function( data ) {
+                        response( data );
+                    }
+                });
+            },
+        });
         });
     </script>
   </body>
