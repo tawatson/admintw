@@ -205,8 +205,8 @@ $items = $db->resultSet();
               </h3>
               <div class="row mB-30">
                 <div class="col-md-3 mL-30">
-                  <p><strong><? echo $clientInfo['name'];?></strong><? if(!empty($clientInfo['contact_name'])){ echo"(Att: ".$clientInfo['contact_name'].")";?><br> <? echo $clientInfo['address1'];?><br>
-                    <? if(!empty($clientInfo['address2'])){ echo $clientInfo['address2']."<br/>".$clientInfo['suburb'].", ".$clientInfo['state'].", ".$clientInfo['postcode'];?></p>
+                  <p><strong><? echo $clientInfo['name'];?></strong><? if(!empty($clientInfo['contact_name'])){ echo"(Att: ".$clientInfo['contact_name'].")";}?><br> <? echo $clientInfo['address1'];?><br>
+                    <? if(!empty($clientInfo['address2'])){ echo $clientInfo['address2']} echo "<br/>".$clientInfo['suburb'].", ".$clientInfo['state'].", ".$clientInfo['postcode'];?></p>
                 </div>
                 <div class="col-md-3 ml-auto mR-30 text-right">
                   <p><strong>Issue Date: </strong> <? echo date('M jS, Y', strtotime($clientInfo['issue_date']));?></p>
