@@ -8,12 +8,33 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   exit;
 }
 
+if(!isset($_GET['id'])){
+  header("location: /invoices.php");
+  exit;
+}
+
 require "config.php";
 
 $db->query("SELECT * FROM wa_users WHERE email = :email");
 $db->bind(":email", $_SESSION['username']);
 $userInfo = $db->single();
 
+$invoiceId = $_GET['id'];
+
+// Get invoice info
+$db->query("SELECT * FROM wa_invoices WHERE id = :id");
+$db->bind(":id", $invoiceId);
+$invoiceInfo = $db->single();
+
+// Get Client info
+$db->query("SELECT * FROM wa_clients WHERE id = :id");
+$db->bind(":id", $invoiceInfo['client_id']);
+$clientInfo = $db->single();
+
+// Get Current Invoice items
+$db->query("SELECT * FROM wa_invoice_items WHERE invoice_id = :id");
+$db->bind(":id", $invoiceId);
+$items = $db->resultSet();
 ?>
   <!DOCTYPE html>
   <html>
@@ -21,7 +42,7 @@ $userInfo = $db->single();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Editing: Invoice #</title>
+    <title>Editing: Invoice #<? echo $invoiceId;?></title>
     <style>
       #loader {
         transition: all .3s ease-in-out;
@@ -179,16 +200,17 @@ $userInfo = $db->single();
         <main class="main-content bgc-grey-100">
           <div id="mainContent" class="bd bdc-grey-300">
             <div class="container-fluid bgc-white">
-              <h3 class="c-grey-900 pT-15 mB-30">Invoice #2018XXX
+              <h3 class="c-grey-900 pT-15 mB-30">Invoice #<? echo $invoiceId;?>
                 <a class="btn btn-success c-white pull-right"><i class="ti-pencil-alt"></i> Save Invoice</a>
               </h3>
               <div class="row mB-30">
                 <div class="col-md-3 mL-30">
-                  <p><strong>Client Name</strong> (Att: Contact Name)<br> Address Line 1<br> Address Line 2<br> Suburb, ACT, 2600</p>
+                  <p><strong><? echo $clientInfo['name'];?></strong><? if(!empty($clientInfo['contact_name'])){ echo"(Att: ".$clientInfo['contact_name'].")";?><br> <? echo $clientInfo['address1'];?><br>
+                    <? if(!empty($clientInfo['address2'])){ echo $clientInfo['address2']."<br/>".$clientInfo['suburb'].", ".$clientInfo['state'].", ".$clientInfo['postcode'];?></p>
                 </div>
                 <div class="col-md-3 ml-auto mR-30 text-right">
-                  <p><strong>Issue Date: </strong> XX/XX/XXXX</p>
-                  <p><strong>Due Date: </strong> XX/XX/XXXX</p>
+                  <p><strong>Issue Date: </strong> <? echo date('M jS, Y', strtotime($clientInfo['issue_date']));?></p>
+                  <p><strong>Due Date: </strong> <? echo date('M jS, Y', strtotime($clientInfo['due_date']));?></p>
                 </div>
               </div>
               <div class="row">
@@ -204,8 +226,23 @@ $userInfo = $db->single();
         <th>Item Total</th>
         <th></th>
       </tr>
+      <? if($items){
+        foreach ($items as $item) {?>
+          <tr>
+            <td contenteditable="true"><? echo $item['description'];?></td>
+            <td contenteditable="true" class="itemCost"><? echo $item['cost'];?></td>
+            <td contenteditable="true" class="itemQty"><? echo $item['qty'];?></td>
+            <td class="totalItemCost"><? echo "$".$item['cost'] * $item['qty'];?></td>
+            <td>
+              <span class="table-remove ti-close"></span>
+              <span class="table-up ti-arrow-up"></span>
+              <span class="table-down ti-arrow-down"></span>
+            </td>
+          </tr>
+      <?  }
+    } else {?>
       <tr>
-        <td contenteditable="true">Lorem Ipsum</td>
+        <td contenteditable="true" ></td>
         <td contenteditable="true" class="itemCost">0.00</td>
         <td contenteditable="true" class="itemQty">0</td>
         <td class="totalItemCost">$0.00</td>
@@ -215,6 +252,7 @@ $userInfo = $db->single();
           <span class="table-down ti-arrow-down"></span>
         </td>
       </tr>
+    <?}?>
       <!-- This is our clonable table line -->
       <tr class="d-none">
         <td contenteditable="true">Lorem Ipsum</td>
