@@ -29,12 +29,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
     $term=$_GET["q"];
       $db->query("SELECT name FROM wa_clients WHERE name LIKE '%:term%'");
       $db->bind(":term", $term);
-      $result = mysql_query($sql);
+      $results = $db->resultSet();
 
       $json=array();
 
-      while($row = mysql_fetch_array($result)) {
-        array_push($json, $row['fname']);
+    foreach ($results as $row){
+        array_push($json, $row['name']);
       }
 
       echo json_encode($json);
