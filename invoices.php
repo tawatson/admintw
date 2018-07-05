@@ -225,7 +225,7 @@ $userInfo = $db->single();
                         ?>
                         <tr>
                           <th scope="row"><? echo $invoice['id'];?></th>
-                          <td<? echo $client['name'];?></td>
+                          <td><? echo $client['name'];?></td>
                           <td><? echo array_sum($cost);?></td>
                           <td><? echo date('M jS, Y', strtotime($invoice['issue_date']));?></td>
                           <td><? echo date('M jS, Y', strtotime($invoice['due_date']));?></td>
