@@ -221,13 +221,12 @@ $userInfo = $db->single();
                                 $cost[] = $itemCost;
                               }
                         ?>
-                        <tr <? echo ($invoice['paid'] == 1 ? 'class="table-success"' : "" )?> >
+                        <tr>
                           <th scope="row"><? echo $invoice['id'];?></th>
                           <td<? echo $client['name'];?></td>
                           <td><? echo array_sum($cost);?></td>
                           <td><? echo date('M jS, Y', $invoice['issue_date']);?></td>
-                          <td <?echo ($invoice['paid'] == 0 ? (date($invoice['due_date']) < date('Y-m-d H:i:s') ? 'class="table-danger"' : "" ) : ""))?>><? echo date('M jS, Y', $invoice['due_date']);?></td>
-
+                          <td><? echo date('M jS, Y', $invoice['due_date']);?></td>
                         </tr>
                             <?
                           }
