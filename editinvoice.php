@@ -230,7 +230,7 @@ $items = $db->resultSet();
             </div>
           </div>
         </main>
-    <? require 'components/footer.php';?>
+    <? include 'components/footer.php';?>
     <script type="text/javascript" src="static/jquery.formatCurrency-1.4.0.min.js"></script>
     <script>
       $(".itemCost:not(:hidden), .itemQty").keyup(function(event) {
