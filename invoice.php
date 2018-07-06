@@ -14,6 +14,30 @@ $db->query("SELECT * FROM wa_users WHERE email = :email");
 $db->bind(":email", $_SESSION['username']);
 $userInfo = $db->single();
 
+
+$invoiceId = $_GET['id'];
+
+// Get invoice info
+$db->query("SELECT * FROM wa_invoices WHERE id = :id");
+$db->bind(":id", $invoiceId);
+$invoiceInfo = $db->single();
+
+// Get Client info
+$db->query("SELECT * FROM wa_clients WHERE id = :id");
+$db->bind(":id", $invoiceInfo['client_id']);
+$clientInfo = $db->single();
+
+// Get Current Invoice items
+$db->query("SELECT * FROM wa_invoice_items WHERE invoice_id = :id");
+$db->bind(":id", $invoiceId);
+$items = $db->resultSet();
+
+$cost = array();
+
+foreach ($items as $item) {
+  $itemCost = $item['cost'] * $item['qty'];
+  $cost[] = $itemCost;
+}
 ?>
   <!DOCTYPE html>
   <html>
@@ -89,70 +113,7 @@ $userInfo = $db->single();
       });
     </script>
     <div>
-      <div class="sidebar">
-        <div class="sidebar-inner">
-          <div class="sidebar-logo">
-            <div class="peers ai-c fxw-nw">
-              <div class="peer peer-greed">
-                <a class="sidebar-link td-n" href="/">
-                  <div class="peers ai-c fxw-nw">
-                    <div class="peer">
-                      <div class="logo"><img src="static/assets/static/images/logo.png" alt="" style="width:100%; padding: 10px;"></div>
-                    </div>
-                    <div class="peer peer-greed">
-                      <h5 class="lh-1 mB-0 logo-text">Terrence Watson</h5></div>
-                  </div>
-                </a>
-              </div>
-              <div class="peer">
-                <div class="mobile-toggle sidebar-toggle"><a href="" class="td-n"><i class="ti-arrow-circle-left"></i></a></div>
-              </div>
-            </div>
-          </div>
-          <ul class="sidebar-menu scrollable pos-r">
-            <li class="nav-item mT-30"><a class="sidebar-link" href="/"><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Dashboard</span></a></li>
-            <li class="nav-item active"><a class="sidebar-link" href="invoices.php"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span></a></li>
-            <!--<li class="nav-item"><a class="sidebar-link" href="compose.html"><span class="icon-holder"><i class="c-blue-500 ti-share"></i> </span><span class="title">Compose</span></a></li>
-          <li class="nav-item"><a class="sidebar-link" href="calendar.html"><span class="icon-holder"><i class="c-deep-orange-500 ti-calendar"></i> </span><span class="title">Calendar</span></a></li>
-          <li class="nav-item"><a class="sidebar-link" href="chat.html"><span class="icon-holder"><i class="c-deep-purple-500 ti-comment-alt"></i> </span><span class="title">Chat</span></a></li>
-          <li class="nav-item"><a class="sidebar-link" href="charts.html"><span class="icon-holder"><i class="c-indigo-500 ti-bar-chart"></i> </span><span class="title">Charts</span></a></li>
-          <li class="nav-item"><a class="sidebar-link" href="forms.html"><span class="icon-holder"><i class="c-light-blue-500 ti-pencil"></i> </span><span class="title">Forms</span></a></li>
-          <li class="nav-item dropdown"><a class="sidebar-link" href="ui.html"><span class="icon-holder"><i class="c-pink-500 ti-palette"></i> </span><span class="title">UI Elements</span></a></li>
-          <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-orange-500 ti-layout-list-thumb"></i> </span><span class="title">Tables</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
-            <ul class="dropdown-menu">
-              <li><a class="sidebar-link" href="basic-table.html">Basic Table</a></li>
-              <li><a class="sidebar-link" href="datatable.html">Data Table</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-purple-500 ti-map"></i> </span><span class="title">Maps</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="google-maps.html">Google Map</a></li>
-              <li><a href="vector-maps.html">Vector Map</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-red-500 ti-files"></i> </span><span class="title">Pages</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
-            <ul class="dropdown-menu">
-              <li><a class="sidebar-link" href="blank.html">Blank</a></li>
-              <li><a class="sidebar-link" href="404.html">404</a></li>
-              <li><a class="sidebar-link" href="500.html">500</a></li>
-              <li><a class="sidebar-link" href="signin.html">Sign In</a></li>
-              <li><a class="sidebar-link" href="signup.html">Sign Up</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i> </span><span class="title">Multiple Levels</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
-            <ul class="dropdown-menu">
-              <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Menu Item</span></a></li>
-              <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Menu Item</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="javascript:void(0);">Menu Item</a></li>
-                  <li><a href="javascript:void(0);">Menu Item</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>-->
-          </ul>
-        </div>
-      </div>
+      <? require "components/sidebar.php";?>
       <div class="page-container">
         <div class="header navbar">
           <div class="header-container">
@@ -179,37 +140,68 @@ $userInfo = $db->single();
         <main class="main-content bgc-grey-100">
           <div id="mainContent" class="bd bdc-grey-300">
             <div class="container-fluid bgc-white">
-              <h3 class="c-grey-900 pT-15 mB-30">Invoice #2018XXX
-                <a class="btn btn-danger c-white pull-right"><i class="ti-pencil-alt"></i> Edit Invoice</a>
+              <h3 class="c-grey-900 pT-15 mB-30">Invoice #<? echo $invoiceId;?>
+                <a class="btn btn-danger c-white pull-right" href="editinvoice.php?id=<?echo $invoiceId;?>"><i class="ti-pencil-alt"></i> Edit Invoice</a>
               </h3>
               <div class="row mB-30">
                 <div class="col-md-3 mL-30">
-                  <p><strong>Client Name</strong> (Att: Contact Name)<br> Address Line 1<br> Address Line 2<br> Suburb, ACT, 2600</p>
+                  <p><strong><? echo $clientInfo['name'];?></strong>
+                    <? if(!empty($clientInfo['contact_name'])){ echo"<br/>(Att: ".$clientInfo['contact_name'].")";}?><br>
+                      <? echo $clientInfo['address1'];?><br>
+                        <? if(!empty($clientInfo['address2'])){ echo $clientInfo['address2']."<br/>";} echo $clientInfo['suburb'].", ".$clientInfo['state'].", ".$clientInfo['postcode'];?></p>
                 </div>
                 <div class="col-md-3 ml-auto mR-30 text-right">
-                  <p><strong>Issue Date: </strong> XX/XX/XXXX</p>
-                  <p><strong>Due Date: </strong> XX/XX/XXXX</p>
-                  <h3>Total: <span class="d-ib bgc-red-50 p-10 bd bdc-red-500 c-red-900 bdrs-10em">$XXX.XX</span></h3>
+                  <p><strong>Issue Date: </strong>
+                    <? echo date('M jS, Y', strtotime($invoiceInfo['issue_date']));?>
+                  </p>
+                  <p><strong>Due Date: </strong>
+                    <? echo date('M jS, Y', strtotime($invoiceInfo['due_date']));?>
+                  </p>
+                  <h3>Total: <span class="d-ib <? echo ($invoiceInfo['paid'] == 1 ? "bgc-green-50 bdc-green-500 c-green-900" : "bgc-red-50 bdc-red-500 c-red-900")?> p-10 bd  bdrs-10em">$<? echo array_sum($cost);?></span></h3>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="bd bdrs-3 mB-20">
                     <table class="table">
-                      <tbody>
+                      <tr>
+                        <th>Item ID</th>
+                        <th>Item Description</th>
+                        <th>Item Cost</th>
+                        <th>Qty</th>
+                        <th>Item Total</th>
+                        <th></th>
+                      </tr>
+                      <? if(!empty($items)){
+                        foreach ($items as $item) {?>
                         <tr>
-                          <th>Item Description</th>
-                          <th>Item Cost</th>
-                          <th>Qty</th>
-                          <th>Item Total</th>
+                          <td>
+                            <? echo $item['id'];?>
+                          </td>
+                          <td contenteditable="true">
+                            <? echo $item['description'];?>
+                          </td>
+                          <td contenteditable="true" class="itemCost">
+                            <? echo $item['cost'];?>
+                          </td>
+                          <td contenteditable="true" class="itemQty">
+                            <? echo $item['qty'];?>
+                          </td>
+                          <td class="totalItemCost">
+                            <? // echo "$".$item['cost'] * $item['qty'];?>
+                          </td>
+                          <td>
+                            <span class="table-remove ti-close"></span>
+                            <span class="table-up ti-arrow-up"></span>
+                            <span class="table-down ti-arrow-down"></span>
+                          </td>
                         </tr>
-                        <tr>
-                          <td>Lorem ipsum dolor sit amet.</td>
-                          <td>$XX</td>
-                          <td>X</td>
-                          <td>$XX.00</td>
-                        </tr>
-                      </tbody>
+                        <?  }
+                      } else {
+
+                          echo "<tr><td colspan='6'><h3>No items to display</h3></td></tr>";
+                      }?>
+
                     </table>
                   </div>
                 </div>
@@ -217,16 +209,7 @@ $userInfo = $db->single();
             </div>
           </div>
         </main>
-        <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2018 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. Backend and related code is by Terrence Watson. All rights reserved.</span></footer>
-      </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="static/modal.js"></script>
-    <script type="text/javascript" src="static/vendor.js"></script>
-    <script type="text/javascript" src="static/bundle.js"></script>
-    <script type="text/javascript" src="static/assets/scripts.js"></script>
-
+<? require "components/footer.php";?>
   </body>
 
   </html>
