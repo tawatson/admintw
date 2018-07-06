@@ -45,7 +45,7 @@ foreach ($items as $item) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Invoice #</title>
+    <title>Invoice #<? echo $invoiceId;?></title>
     <style>
       #loader {
         transition: all .3s ease-in-out;
@@ -169,14 +169,13 @@ foreach ($items as $item) {
                         <th>Item Description</th>
                         <th>Item Cost</th>
                         <th>Qty</th>
-                        <th>Item Total</th>
-                        <th></th>
+                        <th>Item Total</th> 
                       </tr>
                       <? if(!empty($items)){
                         foreach ($items as $item) {?>
                         <tr>
                           <td>
-                            <? echo $item['id'];?>
+                            <? echo $item['id']"";?>
                           </td>
                           <td contenteditable="true">
                             <? echo $item['description'];?>

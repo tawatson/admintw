@@ -212,6 +212,7 @@ $items = $db->resultSet();
                             <?}?>
                               <!-- This is our clonable table line -->
                               <tr class="d-none">
+                                <td>0</td>
                                 <td contenteditable="true">Lorem Ipsum</td>
                                 <td contenteditable="true" class="itemCost">0.00</td>
                                 <td contenteditable="true" class="itemQty">0</td>
