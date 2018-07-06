@@ -112,7 +112,7 @@ $items = $db->resultSet();
       });
     </script>
     <div>
-    <? require 'components/siderbar.php';?>
+    <? require 'components/sidebar.php';?>
       <div class="page-container">
         <div class="header navbar">
           <div class="header-container">
@@ -230,7 +230,7 @@ $items = $db->resultSet();
             </div>
           </div>
         </main>
-    <? include 'components/footer.php';?>
+    <? require 'components/footer.php';?>
     <script type="text/javascript" src="static/jquery.formatCurrency-1.4.0.min.js"></script>
     <script>
       $(".itemCost:not(:hidden), .itemQty").keyup(function(event) {
