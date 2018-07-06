@@ -188,7 +188,7 @@ $items = $db->resultSet();
                               <? echo $item['qty'];?>
                             </td>
                             <td class="totalItemCost">
-                              <? // echo "$".$item['cost'] * $item['qty'];?>
+                              <? echo "$".$item['cost'] * $item['qty'];?>
                             </td>
                             <td>
                               <span class="table-remove ti-close"></span>
@@ -199,6 +199,7 @@ $items = $db->resultSet();
                           <?  }
     } else {?>
                             <tr>
+                              <td>0</td>
                               <td contenteditable="true">Item Description</td>
                               <td contenteditable="true" class="itemCost">0.00</td>
                               <td contenteditable="true" class="itemQty">0</td>
