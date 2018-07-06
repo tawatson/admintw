@@ -23,8 +23,8 @@ $(function() {
     });
 
     $(".refreshRepos").click(function(){
-      $(".refreshRepos .fa-refresh").toggleClass("fa-spin");
-      $("table.table-hover").parent().load("/settings.php table.table-hover", function(){$.getScript("/static/assets/scripts.js").done(function(){$(".refreshRepos .fa-refresh").toggleClass("fa-spin");});});
+      $(".refreshRepos .fa-refresh").addClass("fa-spin");
+      $("table.table-hover").parent().load("/settings.php table.table-hover", function(){$.getScript("/static/assets/scripts.js").done(function(){$(".refreshRepos .fa-refresh").removeClass("fa-spin");});});
 
     });
 

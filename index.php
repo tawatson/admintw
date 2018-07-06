@@ -18,7 +18,7 @@ $db->query("SELECT * FROM wa_repos");
 $repos = $db->resultSet();
 
 $ganalytics->setAccountId('ga:150420384');
-//GANALYTICS SITE VISITS
+//GANALYTICS SITE VISITS (TO DO: MAKE THIS AJAX TO EASE LOAD TIME)
 $params = array(
 	'metrics' => 'ga:visits',
 	'dimensions' => 'ga:date'
@@ -471,15 +471,7 @@ foreach ($countryvisits['rows'] as $row) {
           </div>
         </div>
       </main>
-      <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2018 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. Backend and related code is by Terrence Watson. All rights reserved.</span></footer>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="static/vendor.js"></script>
-  <script type="text/javascript" src="static/bundle.js"></script>
-  <script type="text/javascript" src="static/assets/scripts.js"></script>
-  <script type="text/javascript" src="static/jquery-jvectormap-2.0.3.min.js"></script>
-  <script type="text/javascript" src="static/jquery-jvectormap-world-mill.js"></script>
+      <? require "components/footer.php";?>
   <script>
     var countryData = <? echo json_encode($jvmData);?>;
       $(function(){
