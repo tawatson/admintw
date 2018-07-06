@@ -247,6 +247,7 @@ $items = $db->resultSet();
       });
 
       $('.table-down').click(function() {
+        $(this).addClass("disabled").text("Saving...");
         var $row = $(this).parents('tr');
         $row.next().after($row.get(0));
       });
@@ -255,7 +256,7 @@ $items = $db->resultSet();
       jQuery.fn.pop = [].pop;
       jQuery.fn.shift = [].shift;
 
-      /*$BTN.click(function () {
+      $(".saveInvoiceItems").click(function () {
       var $rows = $TABLE.find('tr:not(:hidden)');
       var headers = [];
       var data = [];
@@ -276,11 +277,22 @@ $items = $db->resultSet();
         });
 
         data.push(h);
-      });*/
+      });
 
-      /*// Output the result
-      $EXPORT.text(JSON.stringify(data));
-      });*/
+      $.post({
+        url: "ajax.php",
+        data: {
+          data: encodeURIComponent(JSON.stringify(DATA)),
+          action: "saveInvoiceItems"
+        },
+        success: function (response) {
+          if (response == "Success") {
+            window.location = "invoice.php?id=<?echo $invoiceId;?>";
+          }
+        }
+      });
+
+      });
     </script>
   </body>
 
