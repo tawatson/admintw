@@ -42,7 +42,9 @@ $items = $db->resultSet();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Editing: Invoice #<? echo $invoiceId;?></title>
+    <title>Editing: Invoice #
+      <? echo $invoiceId;?>
+    </title>
     <style>
       #loader {
         transition: all .3s ease-in-out;
@@ -132,7 +134,12 @@ $items = $db->resultSet();
           </div>
           <ul class="sidebar-menu scrollable pos-r">
             <li class="nav-item mT-30"><a class="sidebar-link" href="/"><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Dashboard</span></a></li>
-            <li class="nav-item active"><a class="sidebar-link" href="invoices.php"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span></a></li>
+            <li class="nav-item dropdown open active"><a class="sidebar-link" href="invoices.php"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
+              <ul class="dropdown-menu"
+                style="display: block;">
+                <li><a class="sidebar-link active" href="javascript:void(0);">Edit Invoice</a></li>
+              </ul>
+            </li>
             <!--<li class="nav-item"><a class="sidebar-link" href="compose.html"><span class="icon-holder"><i class="c-blue-500 ti-share"></i> </span><span class="title">Compose</span></a></li>
           <li class="nav-item"><a class="sidebar-link" href="calendar.html"><span class="icon-holder"><i class="c-deep-orange-500 ti-calendar"></i> </span><span class="title">Calendar</span></a></li>
           <li class="nav-item"><a class="sidebar-link" href="chat.html"><span class="icon-holder"><i class="c-deep-purple-500 ti-comment-alt"></i> </span><span class="title">Chat</span></a></li>
@@ -205,70 +212,86 @@ $items = $db->resultSet();
               </h3>
               <div class="row mB-30">
                 <div class="col-md-3 mL-30">
-                  <p><strong><? echo $clientInfo['name'];?></strong><? if(!empty($clientInfo['contact_name'])){ echo"<br/>(Att: ".$clientInfo['contact_name'].")";}?><br> <? echo $clientInfo['address1'];?><br>
-                    <? if(!empty($clientInfo['address2'])){ echo $clientInfo['address2']."<br/>";} echo $clientInfo['suburb'].", ".$clientInfo['state'].", ".$clientInfo['postcode'];?></p>
+                  <p><strong><? echo $clientInfo['name'];?></strong>
+                    <? if(!empty($clientInfo['contact_name'])){ echo"<br/>(Att: ".$clientInfo['contact_name'].")";}?><br>
+                      <? echo $clientInfo['address1'];?><br>
+                        <? if(!empty($clientInfo['address2'])){ echo $clientInfo['address2']."<br/>";} echo $clientInfo['suburb'].", ".$clientInfo['state'].", ".$clientInfo['postcode'];?></p>
                 </div>
                 <div class="col-md-3 ml-auto mR-30 text-right">
-                  <p><strong>Issue Date: </strong> <? echo date('M jS, Y', strtotime($invoiceInfo['issue_date']));?></p>
-                  <p><strong>Due Date: </strong> <? echo date('M jS, Y', strtotime($invoiceInfo['due_date']));?></p>
+                  <p><strong>Issue Date: </strong>
+                    <? echo date('M jS, Y', strtotime($invoiceInfo['issue_date']));?>
+                  </p>
+                  <p><strong>Due Date: </strong>
+                    <? echo date('M jS, Y', strtotime($invoiceInfo['due_date']));?>
+                  </p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="bd bdrs-3 mB-20">
                     <div id="table" class="table-editable">
-    <span class="table-add ti-plus"></span>
-    <table class="table">
-      <tr>
-        <th>Item ID</th>
-        <th>Item Description</th>
-        <th>Item Cost</th>
-        <th>Qty</th>
-        <th>Item Total</th>
-        <th></th>
-      </tr>
-      <? if(!empty($items)){
+                      <span class="table-add ti-plus"></span>
+                      <table class="table">
+                        <tr>
+                          <th>Item ID</th>
+                          <th>Item Description</th>
+                          <th>Item Cost</th>
+                          <th>Qty</th>
+                          <th>Item Total</th>
+                          <th></th>
+                        </tr>
+                        <? if(!empty($items)){
         foreach ($items as $item) {?>
-          <tr>
-            <td><? echo $item['id'];?></td>
-            <td contenteditable="true"><? echo $item['description'];?></td>
-            <td contenteditable="true" class="itemCost"><? echo $item['cost'];?></td>
-            <td contenteditable="true" class="itemQty"><? echo $item['qty'];?></td>
-            <td class="totalItemCost"><? // echo "$".$item['cost'] * $item['qty'];?></td>
-            <td>
-              <span class="table-remove ti-close"></span>
-              <span class="table-up ti-arrow-up"></span>
-              <span class="table-down ti-arrow-down"></span>
-            </td>
-          </tr>
-      <?  }
+                          <tr>
+                            <td>
+                              <? echo $item['id'];?>
+                            </td>
+                            <td contenteditable="true">
+                              <? echo $item['description'];?>
+                            </td>
+                            <td contenteditable="true" class="itemCost">
+                              <? echo $item['cost'];?>
+                            </td>
+                            <td contenteditable="true" class="itemQty">
+                              <? echo $item['qty'];?>
+                            </td>
+                            <td class="totalItemCost">
+                              <? // echo "$".$item['cost'] * $item['qty'];?>
+                            </td>
+                            <td>
+                              <span class="table-remove ti-close"></span>
+                              <span class="table-up ti-arrow-up"></span>
+                              <span class="table-down ti-arrow-down"></span>
+                            </td>
+                          </tr>
+                          <?  }
     } else {?>
-      <tr>
-        <td contenteditable="true">Item Description</td>
-        <td contenteditable="true" class="itemCost">0.00</td>
-        <td contenteditable="true" class="itemQty">0</td>
-        <td class="totalItemCost">$0.00</td>
-        <td>
-          <span class="table-remove ti-close"></span>
-          <span class="table-up ti-arrow-up"></span>
-          <span class="table-down ti-arrow-down"></span>
-        </td>
-      </tr>
-    <?}?>
-      <!-- This is our clonable table line -->
-      <tr class="d-none">
-        <td contenteditable="true">Lorem Ipsum</td>
-        <td contenteditable="true" class="itemCost">0.00</td>
-        <td contenteditable="true" class="itemQty">0</td>
-        <td class="totalItemCost">$0.00</td>
-        <td>
-          <span class="table-remove ti-close"></span>
-          <span class="table-up ti-arrow-up"></span>
-          <span class="table-down ti-arrow-down"></span>
-        </td>
-      </tr>
-    </table>
-  </div>
+                            <tr>
+                              <td contenteditable="true">Item Description</td>
+                              <td contenteditable="true" class="itemCost">0.00</td>
+                              <td contenteditable="true" class="itemQty">0</td>
+                              <td class="totalItemCost">$0.00</td>
+                              <td>
+                                <span class="table-remove ti-close"></span>
+                                <span class="table-up ti-arrow-up"></span>
+                                <span class="table-down ti-arrow-down"></span>
+                              </td>
+                            </tr>
+                            <?}?>
+                              <!-- This is our clonable table line -->
+                              <tr class="d-none">
+                                <td contenteditable="true">Lorem Ipsum</td>
+                                <td contenteditable="true" class="itemCost">0.00</td>
+                                <td contenteditable="true" class="itemQty">0</td>
+                                <td class="totalItemCost">$0.00</td>
+                                <td>
+                                  <span class="table-remove ti-close"></span>
+                                  <span class="table-up ti-arrow-up"></span>
+                                  <span class="table-down ti-arrow-down"></span>
+                                </td>
+                              </tr>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -286,65 +309,65 @@ $items = $db->resultSet();
     <script type="text/javascript" src="static/assets/scripts.js"></script>
     <script type="text/javascript" src="static/jquery.formatCurrency-1.4.0.min.js"></script>
     <script>
-    $( ".itemCost:not(:hidden), .itemQty" ).keyup(function(event) {
-  $(this).siblings(".totalItemCost").text($(this).text() * $(this).siblings(".itemCost:not(:hidden), .itemQty").text()).formatCurrency();
-});
+      $(".itemCost:not(:hidden), .itemQty").keyup(function(event) {
+        $(this).siblings(".totalItemCost").text($(this).text() * $(this).siblings(".itemCost:not(:hidden), .itemQty").text()).formatCurrency();
+      });
 
-    var $TABLE = $('#table');
+      var $TABLE = $('#table');
 
-$('.table-add').click(function () {
-var $clone = $TABLE.find('tr.d-none').clone(true).removeClass('d-none');
-$TABLE.find('table').append($clone);
-$( ".itemCost:not(:hidden), .itemQty" ).keyup(function(event) {
-  $(this).siblings(".totalItemCost").text($(this).text() * $(this).siblings(".itemCost:not(:hidden), .itemQty").text()).formatCurrency();
-});
-});
+      $('.table-add').click(function() {
+        var $clone = $TABLE.find('tr.d-none').clone(true).removeClass('d-none');
+        $TABLE.find('table').append($clone);
+        $(".itemCost:not(:hidden), .itemQty").keyup(function(event) {
+          $(this).siblings(".totalItemCost").text($(this).text() * $(this).siblings(".itemCost:not(:hidden), .itemQty").text()).formatCurrency();
+        });
+      });
 
-$('.table-remove').click(function () {
-$(this).parents('tr').detach();
-});
+      $('.table-remove').click(function() {
+        $(this).parents('tr').detach();
+      });
 
-$('.table-up').click(function () {
-var $row = $(this).parents('tr');
-if ($row.index() === 1) return; // Don't go above the header
-$row.prev().before($row.get(0));
-});
+      $('.table-up').click(function() {
+        var $row = $(this).parents('tr');
+        if ($row.index() === 1) return; // Don't go above the header
+        $row.prev().before($row.get(0));
+      });
 
-$('.table-down').click(function () {
-var $row = $(this).parents('tr');
-$row.next().after($row.get(0));
-});
+      $('.table-down').click(function() {
+        var $row = $(this).parents('tr');
+        $row.next().after($row.get(0));
+      });
 
-// A few jQuery helpers for exporting only
-jQuery.fn.pop = [].pop;
-jQuery.fn.shift = [].shift;
+      // A few jQuery helpers for exporting only
+      jQuery.fn.pop = [].pop;
+      jQuery.fn.shift = [].shift;
 
-/*$BTN.click(function () {
-var $rows = $TABLE.find('tr:not(:hidden)');
-var headers = [];
-var data = [];
+      /*$BTN.click(function () {
+      var $rows = $TABLE.find('tr:not(:hidden)');
+      var headers = [];
+      var data = [];
 
-// Get the headers (add special header logic here)
-$($rows.shift()).find('th:not(:empty)').each(function () {
-  headers.push($(this).text().toLowerCase());
-});
+      // Get the headers (add special header logic here)
+      $($rows.shift()).find('th:not(:empty)').each(function () {
+        headers.push($(this).text().toLowerCase());
+      });
 
-// Turn all existing rows into a loopable array
-$rows.each(function () {
-  var $td = $(this).find('td');
-  var h = {};
+      // Turn all existing rows into a loopable array
+      $rows.each(function () {
+        var $td = $(this).find('td');
+        var h = {};
 
-  // Use the headers from earlier to name our hash keys
-  headers.forEach(function (header, i) {
-    h[header] = $td.eq(i).text();
-  });
+        // Use the headers from earlier to name our hash keys
+        headers.forEach(function (header, i) {
+          h[header] = $td.eq(i).text();
+        });
 
-  data.push(h);
-});*/
+        data.push(h);
+      });*/
 
-/*// Output the result
-$EXPORT.text(JSON.stringify(data));
-});*/
+      /*// Output the result
+      $EXPORT.text(JSON.stringify(data));
+      });*/
     </script>
   </body>
 

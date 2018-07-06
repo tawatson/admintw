@@ -4,7 +4,7 @@ session_start();
 
 // If session variable is not set it will redirect to login page
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
-  header("location: signin.php?next=%2Finvoices.php");
+  header("location: signin.php?next=".urlencode($_SERVER['REQUEST_URI']));
   exit;
 }
 
@@ -14,6 +14,9 @@ $db->query("SELECT * FROM wa_users WHERE email = :email");
 $db->bind(":email", $_SESSION['username']);
 $userInfo = $db->single();
 
+$db->query("SELECT * FROM wa_repos");
+$repos = $db->resultSet();
+
 ?>
   <!DOCTYPE html>
   <html>
@@ -21,9 +24,7 @@ $userInfo = $db->single();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Invoices</title>
-    <link rel="stylesheet" href="static/jquery-ui.min.css">
-    <link rel="stylesheet" href="static/jquery-ui.structure.css">
+    <title>Settings</title>
     <style>
       #loader {
         transition: all .3s ease-in-out;
@@ -113,7 +114,7 @@ $userInfo = $db->single();
           </div>
           <ul class="sidebar-menu scrollable pos-r">
             <li class="nav-item mT-30"><a class="sidebar-link" href="/"><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Dashboard</span></a></li>
-            <li class="nav-item active"><a class="sidebar-link" href="invoices.php"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span></a></li>
+            <li class="nav-item"><a class="sidebar-link" href="invoices.php"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span></a></li>
             <!--<li class="nav-item"><a class="sidebar-link" href="compose.html"><span class="icon-holder"><i class="c-blue-500 ti-share"></i> </span><span class="title">Compose</span></a></li>
           <li class="nav-item"><a class="sidebar-link" href="calendar.html"><span class="icon-holder"><i class="c-deep-orange-500 ti-calendar"></i> </span><span class="title">Calendar</span></a></li>
           <li class="nav-item"><a class="sidebar-link" href="chat.html"><span class="icon-holder"><i class="c-deep-purple-500 ti-comment-alt"></i> </span><span class="title">Chat</span></a></li>
@@ -179,65 +180,39 @@ $userInfo = $db->single();
           </div>
         </div>
         <main class="main-content bgc-grey-100">
-          <div id="mainContent">
-            <div class="container-fluid">
-              <h3 class="c-grey-900 mT-10 mB-30">Invoices
-                <a class="btn btn-primary c-white pull-right" data-action="newInvoice" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="ti-plus"></i> New Invoice</a>
-              </h3>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                    <table class="table">
-                      <thead>
+          <div id="mainContent" class="bd bdc-grey-300">
+            <div class="container-fluid bgc-white row">
+              <div class="masonry-item col-md-12">
+                  <div class="layers">
+                    <div class="layer w-100 pX-20 pT-20">
+                      <h6 class="lh-1">Software Status <a class="pull-right refreshRepos"><i class="fa fa-refresh"></i></a></h6></div>
+                    <div class="layer p-20 w-100">
+                      <table class="table table-hover">
                         <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Client</th>
-                          <th scope="col">Invoice Amount</th>
-                          <th scope="col">Issue Date</th>
-                          <th scope="col">Due Date</th>
+                          <th>Repo</th>
+                          <th>Last Pull</th>
+                          <th>Status</th>
                         </tr>
-                      </thead>
-                      <tbody>
-                        <?
-                          // Load Invoices
-                          $db->query("SELECT * FROM wa_invoices");
-                          $invoices = $db->resultSet();
-                          if(empty($invoices)){
-                            echo '<td colspan="5" style="text-align:center"><h3>No invoices to display...</h3></td>';
-                          } else {
-                            foreach ($invoices as $invoice) {
-                              // Load Client Name
-                              $db->query('SELECT name FROM wa_clients WHERE id = :id');
-                              $db->bind(":id", $invoice['client_id']);
-                              $client = $db->single();
-
-                              // Load Invoice Cost
-                              $db->query("SELECT cost, qty FROM wa_invoice_items WHERE invoice_id = :id");
-                              $db->bind(":id", $invoice['id']);
-                              $invoice['items'] = $db->resultSet();
-
-                              $cost = array();
-
-                              foreach ($invoice['items'] as $item) {
-                                $itemCost = $item['cost'] * $item['qty'];
-                                $cost[] = $itemCost;
-                              }
+                      <? foreach ($repos as $repo) {
+                        $repoClass = new Tawatson_gitHook($db,$repo['local_dir'],$repo['repo_name']);
                         ?>
-                        <tr role="button" onclick="window.location = '/invoice.php?id=<? echo $invoice['id'];?>'">
-                          <th scope="row"><? echo $invoice['id'];?></th>
-                          <td><? echo $client['name'];?></td>
-                          <td><? echo "$".array_sum($cost);?></td>
-                          <td><? echo date('M jS, Y', strtotime($invoice['issue_date']));?></td>
-                          <td><? echo date('M jS, Y', strtotime($invoice['due_date']));?></td>
-                        </tr>
-                            <?
-                          }
-                        }?>
-                      </tbody>
+
+                        <tr>
+                              <td><? echo $repo['tidy_name'];?></td>
+                              <td><? echo $timeAgo->inWords(date("M jS, Y g:ia", strtotime($repo['last_pull']. " + 17 hours")));?></td>
+                              <? if($repoClass->isUpToDate()){?>
+                              <td class="table-success" id="repo-<?echo $repo['id'];?>">Up to Date</td>
+                              <?} else {?>
+                              <td class="table-warning" id="repo-<?echo $repo['id'];?>"><h4>Out of Date! <a href="javascript:void(0);" data-repo="<? echo $repo['id'];?>"  class="repoUpdate btn btn-xs btn-success pull-right">Update Now <i class="fa fa-download"></i></a></h4></td>
+                              <?}?>
+                          </tr>
+
+                      <? } ?>
                     </table>
+                    </div>
                   </div>
-                </div>
               </div>
+
             </div>
           </div>
         </main>
@@ -245,79 +220,12 @@ $userInfo = $db->single();
       </div>
     </div>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="newInvoice" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title"><i class="ti-money"></i> New Invoice</h5>
-          </div>
-          <div class="modal-body">
-            <form id="invoiceForm">
-              <input type="hidden" name="action" value="createInvoice"/>
-              <div class="form-group">
-                <label for="client">Client</label>
-                <input type="text" class="form-control" id="client" name="client" placeholder="Start typing to search...">
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6"><label class="fw-500">Issue Date</label>
-                  <div class="timepicker-input input-icon form-group">
-                    <div class="input-group">
-                      <div class="input-group-addon bgc-white bd bdwR-0"><i class="ti-calendar"></i></div><input type="text" class="form-control bdc-grey-200 date" data-provide="datepicker" name="issueDate"></div>
-                  </div>
-                </div>
-                <div class="form-group col-md-6"><label class="fw-500">Due Date</label>
-                  <div class="timepicker-input input-icon form-group">
-                    <div class="input-group">
-                      <div class="input-group-addon bgc-white bd bdwR-0"><i class="ti-calendar"></i></div><input type="text" class="form-control bdc-grey-200 date"  data-provide="datepicker" name="dueDate"></div>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary createInvoice">Create Invoice</button>
-            <button type="reset" form="invoiceForm" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="static/modal.js"></script>
     <script type="text/javascript" src="static/vendor.js"></script>
     <script type="text/javascript" src="static/bundle.js"></script>
     <script type="text/javascript" src="static/assets/scripts.js"></script>
-    <script type="text/javascript" src="static/jquery-ui.min.js"></script>
-    <script>
-      // AUTOCOMPLETE FROM DATABASE
-      $(function() {
-        $( "#client" ).autocomplete({
-            source: function( request, response ) {
-                $.ajax({
-                    url: "ajax.php",
-                    dataType: "json",
-                    data: {
-                        q: request.term
-                    },
-                    success: function( data ) {
-                        response( data );
-                    }
-                });
-            },
-        });
 
-        $(".createInvoice").click(function (){
-          $.ajax({
-              url: "ajax.php",
-              method: "post",
-              data: $("#invoiceForm").serialize()+"&action=createInvoice",
-              success: function( data ) {
-                  window.location = "/editinvoice.php?id="+data;
-              }
-          });
-
-        });
-        });
-    </script>
   </body>
 
   </html>
