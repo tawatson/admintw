@@ -197,20 +197,7 @@ $items = $db->resultSet();
                             </td>
                           </tr>
                           <?  }
-    } else {?>
-                            <tr>
-                              <td>0</td>
-                              <td contenteditable="true">Item Description</td>
-                              <td contenteditable="true" class="itemCost">0.00</td>
-                              <td contenteditable="true" class="itemQty">0</td>
-                              <td class="totalItemCost">$0.00</td>
-                              <td>
-                                <span class="table-remove ti-close"></span>
-                                <span class="table-up ti-arrow-up"></span>
-                                <span class="table-down ti-arrow-down"></span>
-                              </td>
-                            </tr>
-                            <?}?>
+                              }?>
                               <!-- This is our clonable table line -->
                               <tr class="d-none">
                                 <td>0</td>
