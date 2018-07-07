@@ -140,7 +140,7 @@ $items = $db->resultSet();
           <div id="mainContent" class="bd bdc-grey-300">
             <div class="container-fluid bgc-white">
               <h3 class="c-grey-900 pT-15 mB-30">Invoice #<? echo $invoiceId;?>
-                <a class="btn btn-success c-white pull-right"><i class="ti-pencil-alt"></i> Save Invoice</a>
+                <a class="btn btn-success c-white pull-right saveInvoiceItems"><i class="ti-pencil-alt"></i> Save Invoice</a>
               </h3>
               <div class="row mB-30">
                 <div class="col-md-3 mL-30">
