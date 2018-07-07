@@ -282,12 +282,13 @@ $items = $db->resultSet();
       $.post({
         url: "ajax.php",
         data: {
-          data: encodeURIComponent(JSON.stringify($data)),
-          action: "saveInvoiceItems"
+          data: JSON.stringify($data),
+          action: "saveInvoiceItems",
+		  invoice_id: "<? echo $invoiceId;?>"
         },
         success: function (response) {
           if (response == "Success") {
-            window.location = "invoice.php?id=<?echo $invoiceId;?>";
+            window.location = "invoice.php?id=<? echo $invoiceId;?>";
           }
         }
       });
