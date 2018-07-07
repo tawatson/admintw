@@ -259,7 +259,7 @@ $items = $db->resultSet();
       $(".saveInvoiceItems").click(function () {
       var $rows = $TABLE.find('tr:not(:hidden)');
       var headers = [];
-      var data = [];
+      var $data = [];
 
       // Get the headers (add special header logic here)
       $($rows.shift()).find('th:not(:empty)').each(function () {
@@ -276,13 +276,13 @@ $items = $db->resultSet();
           h[header] = $td.eq(i).text();
         });
 
-        data.push(h);
+        $data.push(h);
       });
 
       $.post({
         url: "ajax.php",
         data: {
-          data: encodeURIComponent(JSON.stringify(DATA)),
+          data: encodeURIComponent(JSON.stringify($data)),
           action: "saveInvoiceItems"
         },
         success: function (response) {
