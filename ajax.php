@@ -57,6 +57,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
           $db->execute();
 
       }
+    }
       // Remove unused items
       $db-> query("DELETE FROM wa_invoice_items WHERE invoice_id = :id AND item_date < :newtime");
       $db->bind(":id",$_POST['invoice_id']);
@@ -66,6 +67,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
       } else {
         echo "Error";
       }
+
       break;
 
     default:
