@@ -54,7 +54,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
           $db->bind(":cost",$item['item_cost']);
           $db->bind(":qty",$item['qty']);
           $db->bind(":newtime", $updateTime);
-          ($db->execute();
+          $db->execute();
 
       }
       // Remove unused items
