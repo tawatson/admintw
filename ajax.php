@@ -46,7 +46,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
       foreach ($dbItems as $dbItem) {
         foreach ($items as $jsonItem) {
-          if($json['item id'] != 0){
+          if($jsonItem['item id'] != 0){
             //CHECK DATABASE ITEMS ARE IN SUBMISSION
             if(in_array($dbItem['id'],$jsonItem)) {
               //SUBMITTED
