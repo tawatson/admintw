@@ -169,13 +169,13 @@ foreach ($items as $item) {
                         <th>Item Description</th>
                         <th>Item Cost</th>
                         <th>Qty</th>
-                        <th>Item Total</th> 
+                        <th>Item Total</th>
                       </tr>
                       <? if(!empty($items)){
                         foreach ($items as $item) {?>
                         <tr>
                           <td>
-                            <? echo $item['id']"";?>
+                            <? echo $item['id'];?>
                           </td>
                           <td contenteditable="true">
                             <? echo $item['description'];?>
