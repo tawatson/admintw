@@ -62,7 +62,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             if(in_array($jsonItem['item id'], $toDelete)) {
               //IN DB, UPDATE, PREVENT DELETION
               $db->query("UPDATE wa_invoice_items SET description = :des, cost = :cost, qty = :qty, item_date = :newtime WHERE id = :id");
-              $db->bind(":id", $_POST['invoice_id']);
+              $db->bind(":id", $jsonItem['item id']);
               $db->bind(":des",$jsonItem['item description']);
               $db->bind(":cost",$jsonItem['item cost']);
               $db->bind(":qty",$jsonItem['qty']);
