@@ -52,9 +52,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
               //SUBMITTED
               $db->query("UPDATE wa_invoice_items SET description = :des, cost = :cost, qty = :qty, item_date = :newtime WHERE id = :id");
               $db->bind(":id", $_POST['invoice_id']);
-              $db->bind(":des",$item['item description']);
-              $db->bind(":cost",$item['item cost']);
-              $db->bind(":qty",$item['qty']);
+              $db->bind(":des",$jsonItem['item description']);
+              $db->bind(":cost",$jsonItem['item cost']);
+              $db->bind(":qty",$jsonItem['qty']);
               $db->bind(":newtime", $updateTime);
               $db->execute();
             } else {
@@ -64,9 +64,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
           } else {
             $db->query("INSERT INTO wa_invoice_items  (invoice_id,description, cost, qty,item_date) VALUES (:id,:des, :cost, :qty, :newtime)");
             $db->bind(":id",$_POST['invoice_id']);
-            $db->bind(":des",$item['item description']);
-            $db->bind(":cost",$item['item cost']);
-            $db->bind(":qty",$item['qty']);
+            $db->bind(":des",$jsonItem['item description']);
+            $db->bind(":cost",$jsonItem['item cost']);
+            $db->bind(":qty",$jsonItem['qty']);
             $db->bind(":newtime", $updateTime);
             $db->execute();
           }
