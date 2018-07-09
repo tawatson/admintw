@@ -187,7 +187,7 @@ foreach ($items as $item) {
                             <? echo $item['qty'];?>
                           </td>
                           <td class="totalItemCost">
-                            <? echo "$".$item['cost'] * $item['qty'];?>
+                            <? echo "$".number_format($item['cost'] * $item['qty'], 2, '.', ',');;?>
                           </td>
                           <td>
                             <span class="table-remove ti-close"></span>
