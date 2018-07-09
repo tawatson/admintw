@@ -141,7 +141,14 @@ foreach ($items as $item) {
           <div id="mainContent" class="bd bdc-grey-300">
             <div class="container-fluid bgc-white">
               <h3 class="c-grey-900 pT-15 mB-30">Invoice #<? echo $invoiceId;?>
-                <a class="btn btn-danger c-white pull-right" href="editinvoice.php?id=<?echo $invoiceId;?>"><i class="ti-pencil-alt"></i> Edit Invoice</a>
+                <div class="btn-group pull-right">
+                  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Actions</button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="editinvoice.php?id=<? echo $invoiceId;?>"><i class="ti-pencil-alt"></i> Edit Invoice</a>
+                    <a class="dropdown-item" href="#"><i class="ti-check"></i> Mark Invoice as Paid</a>
+                    <a class="dropdown-item" href="#"><i class="ti-trash"></i> Delete Invoice</a>
+                  </div>
+                </div>
               </h3>
               <div class="row mB-30">
                 <div class="col-md-3 mL-30">
