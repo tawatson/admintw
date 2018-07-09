@@ -160,7 +160,7 @@ $userInfo = $db->single();
                                 $cost[] = $itemCost;
                               }
                         ?>
-                        <tr role="button" onclick="window.location = '/invoice.php?id=<? echo $invoice['id'];?>'">
+                        <tr role="button" style="cursor: pointer;" onclick="window.location = '/invoice.php?id=<? echo $invoice['id'];?>'">
                           <th scope="row"><? echo $invoice['id'];?></th>
                           <td><? echo $client['name'];?></td>
                           <td><? echo "$".number_format(array_sum($cost), 2, '.', ',');?></td>
