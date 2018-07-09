@@ -257,6 +257,7 @@ $items = $db->resultSet();
       jQuery.fn.shift = [].shift;
 
       $(".saveInvoiceItems").click(function () {
+        $(this).addClass("disabled").text('Saving...');
       var $rows = $TABLE.find('tr:not(:hidden)');
       var headers = [];
       var $data = [];
@@ -273,7 +274,7 @@ $items = $db->resultSet();
 
         // Use the headers from earlier to name our hash keys
         headers.forEach(function (header, i) {
-          h[header] = $td.eq(i).text();
+          h[header] = $td.eq(i).text().trim();
         });
 
         $data.push(h);
@@ -287,9 +288,12 @@ $items = $db->resultSet();
 		  invoice_id: "<? echo $invoiceId;?>"
         },
         success: function (response) {
-          if (response == "Success") {
-            window.location = "invoice.php?id=<? echo $invoiceId;?>";
-          }
+          $(".saveInvoiceItems").text('Saved');
+          window.location = "invoice.php?id=<? echo $invoiceId;?>";
+        },
+        error: function(xhr, status, error) {
+          var err = eval("(" + xhr.responseText + ")");
+          alert(err.Message);
         }
       });
 
