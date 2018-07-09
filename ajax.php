@@ -45,7 +45,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
       $dbItems = $db->resultSet();
 
       foreach ($dbItems as $item) {
-        if(!in_array($item['id']),$items){
+        if(!in_array($item['id'],$items)){
           $toDelete[] = $item['id'];
         }
       }
