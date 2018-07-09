@@ -184,13 +184,13 @@ foreach ($items as $item) {
                             <? echo $item['description'];?>
                           </td>
                           <td>
-                            <? echo $item['cost'];?>
+                            <? echo "$".number_format($item['cost'], 2, '.', ',');?>
                           </td>
                           <td>
                             <? echo $item['qty'];?>
                           </td>
                           <td>
-                            <? echo "$".number_format($item['cost'] * $item['qty'], 2, '.', ',');;?>
+                            <? echo "$".number_format($item['cost'] * $item['qty'], 2, '.', ',');?>
                           </td>
                         </tr>
                         <?  }

@@ -22,10 +22,10 @@ $(function() {
       });
     });
 
-    $(".refreshRepos").click(function(){
-      $(".refreshRepos .fa-refresh").addClass("fa-spin");
-      $("table.table-hover").parent().load("/settings.php table.table-hover", function(){$.getScript("/static/assets/scripts.js").done(function(){$(".refreshRepos .fa-refresh").removeClass("fa-spin");});});
-
+    $(".mainContent").on('click','.refreshRepos',function(e){
+	     e.preventDefault();
+       $(".refreshRepos .fa-refresh").addClass("fa-spin");
+       $("table.table-hover").parent().load("/settings.php table.table-hover", function(){$(".refreshRepos .fa-refresh").removeClass("fa-spin");});
     });
 
 
