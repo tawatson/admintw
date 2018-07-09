@@ -162,7 +162,7 @@ $items = $db->resultSet();
                 <div class="col-md-12">
                   <div class="bd bdrs-3 mB-20">
                     <div id="table" class="table-editable">
-                      <span class="table-add ti-plus"></span>
+                      <span class="table-add ti-plus" data-toggle="tooltip" data-placement="top" title="Add Item"></span>
                       <table class="table">
                         <tr>
                           <th>Item ID</th>
@@ -191,9 +191,9 @@ $items = $db->resultSet();
                               <? echo "$".$item['cost'] * $item['qty'];?>
                             </td>
                             <td>
-                              <span class="table-remove ti-close"></span>
-                              <span class="table-up ti-arrow-up"></span>
-                              <span class="table-down ti-arrow-down"></span>
+                              <span class="table-remove ti-close" data-toggle="tooltip" data-placement="top" title="Remove Item"></span>
+                              <span class="table-up ti-arrow-up" data-toggle="tooltip" data-placement="top" title="Shift Item Up"></span>
+                              <span class="table-down ti-arrow-down" data-toggle="tooltip" data-placement="top" title="Shift Item Down"></span>
                             </td>
                           </tr>
                           <?  }
@@ -206,9 +206,9 @@ $items = $db->resultSet();
                                 <td contenteditable="true" class="itemQty">0</td>
                                 <td class="totalItemCost">$0.00</td>
                                 <td>
-                                  <span class="table-remove ti-close"></span>
-                                  <span class="table-up ti-arrow-up"></span>
-                                  <span class="table-down ti-arrow-down"></span>
+                                  <span class="table-remove ti-close" data-toggle="tooltip" data-placement="top" title="Remove Item"></span>
+                                  <span class="table-up ti-arrow-up" data-toggle="tooltip" data-placement="top" title="Shift Item Up"></span>
+                                  <span class="table-down ti-arrow-down" data-toggle="tooltip" data-placement="top" title="Shift Item Down"></span>
                                 </td>
                               </tr>
                       </table>

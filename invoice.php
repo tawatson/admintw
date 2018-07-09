@@ -196,11 +196,6 @@ foreach ($items as $item) {
                           <td class="totalItemCost">
                             <? echo "$".number_format($item['cost'] * $item['qty'], 2, '.', ',');;?>
                           </td>
-                          <td>
-                            <span class="table-remove ti-close"></span>
-                            <span class="table-up ti-arrow-up"></span>
-                            <span class="table-down ti-arrow-down"></span>
-                          </td>
                         </tr>
                         <?  }
                       } else {
