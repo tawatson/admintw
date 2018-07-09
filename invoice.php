@@ -172,7 +172,6 @@ foreach ($items as $item) {
                   <div class="bd bdrs-3 mB-20">
                     <table class="table">
                       <tr>
-                        <th>Item ID</th>
                         <th>Item Description</th>
                         <th>Item Cost</th>
                         <th>Qty</th>
@@ -182,18 +181,15 @@ foreach ($items as $item) {
                         foreach ($items as $item) {?>
                         <tr>
                           <td>
-                            <? echo $item['id'];?>
-                          </td>
-                          <td contenteditable="true">
                             <? echo $item['description'];?>
                           </td>
-                          <td contenteditable="true" class="itemCost">
+                          <td>
                             <? echo $item['cost'];?>
                           </td>
-                          <td contenteditable="true" class="itemQty">
+                          <td>
                             <? echo $item['qty'];?>
                           </td>
-                          <td class="totalItemCost">
+                          <td>
                             <? echo "$".number_format($item['cost'] * $item['qty'], 2, '.', ',');;?>
                           </td>
                         </tr>
