@@ -36,20 +36,31 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'saveInvoiceItems':
       $items = json_decode($_POST['data'],true);
 
+      function arrayFlatten($array) {
+              $flattern = array();
+              foreach ($array as $key => $value){
+                  $new_key = array_keys($value);
+                  $flattern[] = $value[$new_key[0]];
+              }
+              return $flattern;
+      }
+
       $updateTime = date("Y-m-d H:i:s");
 
-      $toDelete = array();
+
 
       $db->query("SELECT id FROM wa_invoice_items WHERE invoice_id = :id");
       $db->bind(":id", $_POST['invoice_id']);
       $dbItems = $db->resultSet();
 
+      $toDelete = arrayFlatten($dbItems);
+
       foreach ($dbItems as $dbItem) {
         foreach ($items as $jsonItem) {
           if($jsonItem['item id'] != 0){
             //CHECK DATABASE ITEMS ARE IN SUBMISSION
-            if(in_array($dbItem['id'],$jsonItem)) {
-              //SUBMITTED
+            if(in_array($jsonItem['item id'], $toDelete)) {
+              //IN DB, UPDATE, PREVENT DELETION
               $db->query("UPDATE wa_invoice_items SET description = :des, cost = :cost, qty = :qty, item_date = :newtime WHERE id = :id");
               $db->bind(":id", $_POST['invoice_id']);
               $db->bind(":des",$jsonItem['item description']);
@@ -57,9 +68,18 @@ switch ($_SERVER['REQUEST_METHOD']) {
               $db->bind(":qty",$jsonItem['qty']);
               $db->bind(":newtime", $updateTime);
               $db->execute();
+
+              $toDelete = array_diff($toDelete, array($dbItem['id']));
             } else {
-              //NOT SUBMITTED, ADD TO $toDelete;
-              $toDelete[] = $dbItem['id'];
+              //NOT IN DB, INSERT;
+              $db->query("INSERT INTO wa_invoice_items  (id,invoice_id,description, cost, qty,item_date) VALUES (id,:invoice,:des, :cost, :qty, :newtime)");
+              $db->bind(":id",$jsonItem['item id']);
+              $db->bind(":invoice",$_POST['invoice_id']);
+              $db->bind(":des",$jsonItem['item description']);
+              $db->bind(":cost",$jsonItem['item cost']);
+              $db->bind(":qty",$jsonItem['qty']);
+              $db->bind(":newtime", $updateTime);
+              $db->execute();
             }
           } else {
             $db->query("INSERT INTO wa_invoice_items  (invoice_id,description, cost, qty,item_date) VALUES (:id,:des, :cost, :qty, :newtime)");
