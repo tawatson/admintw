@@ -22,7 +22,7 @@ $(function() {
       });
     });
 
-    $(".mainContent").on('click','.refreshRepos',function(e){
+    $("main").on('click','.refreshRepos',function(e){
 	     e.preventDefault();
        $(".refreshRepos .fa-refresh").addClass("fa-spin");
        $("table.table-hover").parent().load("/settings.php table.table-hover", function(){$(".refreshRepos .fa-refresh").removeClass("fa-spin");});
