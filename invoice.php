@@ -157,7 +157,7 @@ foreach ($items as $item) {
                   <p><strong>Due Date: </strong>
                     <? echo date('M jS, Y', strtotime($invoiceInfo['due_date']));?>
                   </p>
-                  <h3>Total: <span class="d-ib <? echo ($invoiceInfo['paid'] == 1 ? "bgc-green-50 bdc-green-500 c-green-900" : "bgc-red-50 bdc-red-500 c-red-900")?> p-10 bd  bdrs-10em">$<? echo array_sum($cost);?></span></h3>
+                  <h3>Total: <span class="d-ib <? echo ($invoiceInfo['paid'] == 1 ? "bgc-green-50 bdc-green-500 c-green-900" : "bgc-red-50 bdc-red-500 c-red-900")?> p-10 bd  bdrs-10em">$<? echo number_format(array_sum($cost), 2, '.', ',');?></span></h3>
                 </div>
               </div>
               <div class="row">

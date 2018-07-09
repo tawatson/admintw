@@ -163,7 +163,7 @@ $userInfo = $db->single();
                         <tr role="button" onclick="window.location = '/invoice.php?id=<? echo $invoice['id'];?>'">
                           <th scope="row"><? echo $invoice['id'];?></th>
                           <td><? echo $client['name'];?></td>
-                          <td><? echo "$".array_sum($cost);?></td>
+                          <td><? echo "$".number_format(array_sum($cost), 2, '.', ',');?></td>
                           <td><? echo date('M jS, Y', strtotime($invoice['issue_date']));?></td>
                           <td><? echo date('M jS, Y', strtotime($invoice['due_date']));?></td>
                         </tr>
