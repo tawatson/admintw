@@ -38,15 +38,29 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
       $updateTime = date("Y-m-d H:i:s");
 
+      $toDelete = array();
+
+      $db->query("SELECT id FROM wa_invoice_items WHERE invoice_id = :id");
+      $db->bind(":id", $_POST['invoice_id']);
+      $dbItems = $db->resultSet();
+
+      foreach ($dbItems as $item) {
+        if(!in_array($item['id']),$items){
+          $toDelete[] = $item['id'];
+        }
+      }
+
       foreach ($items as $item) {
         if($item['item id'] != 0){
-          $db->query("UPDATE wa_invoice_items SET description = :des, cost = :cost, qty = :qty, item_date = :newtime WHERE id = :id");
-          $db->bind(":id", $_POST['invoice_id']);
-          $db->bind(":des",$item['item description']);
-          $db->bind(":cost",$item['item cost']);
-          $db->bind(":qty",$item['qty']);
-          $db->bind(":newtime", $updateTime);
-          $db->execute();
+          if(in_array($item['item id'], $dbItems)) {
+            $db->query("UPDATE wa_invoice_items SET description = :des, cost = :cost, qty = :qty, item_date = :newtime WHERE id = :id");
+            $db->bind(":id", $_POST['invoice_id']);
+            $db->bind(":des",$item['item description']);
+            $db->bind(":cost",$item['item cost']);
+            $db->bind(":qty",$item['qty']);
+            $db->bind(":newtime", $updateTime);
+            $db->execute();
+          }
         } else {
           $db->query("INSERT INTO wa_invoice_items  (invoice_id,description, cost, qty,item_date) VALUES (:id,:des, :cost, :qty, :newtime)");
           $db->bind(":id",$_POST['invoice_id']);
@@ -58,15 +72,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
       }
     }
-      // Remove unused items
-      $db-> query("DELETE FROM wa_invoice_items WHERE invoice_id = :id AND item_date < :newtime");
-      $db->bind(":id",$_POST['invoice_id']);
-      $db->bind(":newtime", $updateTime);
-      if($db->execute()){
-        echo "Success";
-      } else {
-        echo "Error";
-      }
+
+    foreach ($toDelete as $id) {
+      $db->query("DELETE FROM wa_invoice_items WHERE id = :id");
+      $db->bind(":id",$id);
+      $db->execute();
+    }
 
       break;
 
