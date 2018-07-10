@@ -10,7 +10,7 @@
           <div class="peer"><i class="ti-arrow-circle-down"></i></span>
         </a>
         <ul class="dropdown-menu fsz-sm">
-          <li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-settings mR-10"></i> <span>Settings</span></a></li>
+          <li><a href="/settings.php" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-settings mR-10"></i> <span>Settings</span></a></li>
           <li role="separator" class="divider"></li>
           <li><a href="logout.php" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-power-off mR-10"></i> <span>Logout</span></a></li>
         </ul>
