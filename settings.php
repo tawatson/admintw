@@ -96,9 +96,8 @@ $repos = $db->resultSet();
       <div class="page-container">
         <? require "components/nav.php"; ?>
         <main class="main-content bgc-grey-100">
-          <div id="mainContent" class="bd bdc-grey-300">
-            <div class="container-fluid bgc-white row">
-              <div class="masonry-item col-md-12">
+          <div id="mainContent">
+              <div class="col-md-6 bd bdc-grey-300">
                   <div class="layers">
                     <div class="layer w-100 pX-20 pT-20">
                       <h6 class="lh-1">Software Status <a class="pull-right refreshRepos"><i class="fa fa-refresh"></i></a></h6></div>
@@ -127,8 +126,6 @@ $repos = $db->resultSet();
                     </table>
                     </div>
                   </div>
-              </div>
-
             </div>
           </div>
         </main>
