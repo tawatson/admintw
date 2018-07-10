@@ -6,8 +6,8 @@
     <ul class="nav-right">
       <li class="dropdown">
         <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
-          <div class="peer mR-10"><img class="w-2r bdrs-50p" src="https://api.adorable.io/avatars/237/<? echo $_SESSION['username'];?>.png" alt=""></div>
-          <div class="peer"><span class="fsz-sm c-grey-900"><? echo $userInfo['full_name'];?></span></div>
+          <div class="peer mR-10"><span class="fsz-sm c-grey-900"><? echo $userInfo['full_name'];?></span></div>
+          <div class="peer"><i class="ti-arrow-circle-down"></i></span>
         </a>
         <ul class="dropdown-menu fsz-sm">
           <li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-settings mR-10"></i> <span>Settings</span></a></li>
