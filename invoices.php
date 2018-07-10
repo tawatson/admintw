@@ -93,28 +93,7 @@ $userInfo = $db->single();
     <div>
       <? require 'components/sidebar.php'; ?>
       <div class="page-container">
-        <div class="header navbar">
-          <div class="header-container">
-            <ul class="nav-left">
-              <li><a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);"><i class="ti-menu"></i></a></li>
-            </ul>
-            <ul class="nav-right">
-              <li class="dropdown">
-                <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
-                  <div class="peer mR-10"><img class="w-2r bdrs-50p" src="https://api.adorable.io/avatars/237/<? echo $_SESSION['username'];?>.png" alt=""></div>
-                  <div class="peer"><span class="fsz-sm c-grey-900"><? echo $userInfo['full_name'];?></span></div>
-                </a>
-                <ul class="dropdown-menu fsz-sm">
-                  <li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-settings mR-10"></i> <span>Setting</span></a></li>
-                  <li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-user mR-10"></i> <span>Profile</span></a></li>
-                  <li><a href="email.html" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-email mR-10"></i> <span>Messages</span></a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="logout.php" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-power-off mR-10"></i> <span>Logout</span></a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <? require "components/nav.php"; ?>
         <main class="main-content bgc-grey-100">
           <div id="mainContent">
             <div class="container-fluid">
@@ -124,7 +103,7 @@ $userInfo = $db->single();
               <div class="row">
                 <div class="col-md-12">
                   <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                    <table class="table">
+                    <table class="table table-hover">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
