@@ -119,7 +119,7 @@ $repos = $db->resultSet();
                               <? if($repoClass->isUpToDate()){?>
                               <td class="table-success" id="repo-<?echo $repo['id'];?>">Up to Date</td>
                               <?} else {?>
-                              <td class="table-warning" id="repo-<?echo $repo['id'];?>"><h4>Out of Date! <a href="javascript:void(0);" data-repo="<? echo $repo['id'];?>"  class="repoUpdate btn btn-xs btn-success pull-right">Update Now <i class="fa fa-download"></i></a></h4></td>
+                              <td class="table-warning" id="repo-<?echo $repo['id'];?>"><h4>Out of Date! <a data-repo="<? echo $repo['id'];?>"  class="repoUpdate btn btn-xs btn-success pull-right">Update Now <i class="fa fa-download"></i></a></h4></td>
                               <?}?>
                           </tr>
 

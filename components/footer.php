@@ -2,6 +2,7 @@
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="static/jquery.stayInWebApp.min.js"></script>
 <script type="text/javascript" src="static/vendor.js"></script>
 <script type="text/javascript" src="static/bundle.js"></script>
 <script type="text/javascript" src="static/assets/scripts.js"></script>
