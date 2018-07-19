@@ -51,4 +51,10 @@ if(("standalone" in window.navigator) && window.navigator.standalone){
 
 	},false);
 }
+
+if(("standalone" in window.navigator) && window.navigator.standalone){
+  alert("Standalone!")
+} else {
+  alert("Web Version!")
+}
 });
