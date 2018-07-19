@@ -269,7 +269,7 @@ $items = $db->resultSet();
         },
         success: function (response) {
           $(".saveInvoiceItems").text('Saved');
-          window.location.href = "invoice.php?id=<? echo $invoiceId;?>";
+          document.location.href = "invoice.php?id=<? echo $invoiceId;?>";
         },
         error: function(xhr, status, error) {
           var err = eval("(" + xhr.responseText + ")");
