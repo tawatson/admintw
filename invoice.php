@@ -124,7 +124,7 @@ foreach ($items as $item) {
                 <div class="btn-group pull-right">
                   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Actions</button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item stay" href="editinvoice.php?id=<? echo $invoiceId;?>"><i class="ti-pencil-alt mR-10"></i> Edit Invoice</a>
+                    <a class="dropdown-item stay" href="editinvoice.php?id=<? echo $invoiceId;?>" target="_self"><i class="ti-pencil-alt mR-10"></i> Edit Invoice</a>
                     <a class="dropdown-item stay" href="#"><i class="ti-check mR-10"></i> Mark Invoice as Paid</a>
                     <a class="dropdown-item stay" href="#"><i class="ti-trash mR-10"></i> Delete Invoice</a>
                   </div>

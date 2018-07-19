@@ -3,7 +3,7 @@
     <div class="sidebar-logo">
       <div class="peers ai-c fxw-nw">
         <div class="peer peer-greed">
-          <a class="sidebar-link td-n stay" href="/">
+          <a class="sidebar-link td-n stay" href="/" target="_self">
             <div class="peers ai-c fxw-nw">
               <div class="peer">
                 <div class="logo"><img src="static/assets/static/images/logo.png" alt="" style="width:100%; padding: 10px;"></div>
@@ -19,9 +19,9 @@
       </div>
     </div>
     <ul class="sidebar-menu scrollable pos-r">
-      <li class="nav-item mT-30 <? if(strpos($_SERVER['REQUEST_URI'], '/') !== false){ echo 'active';}?>"><a class="sidebar-link stay" href="/"><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Dashboard</span></a></li>
+      <li class="nav-item mT-30 <? if(strpos($_SERVER['REQUEST_URI'], '/') !== false){ echo 'active';}?>"><a class="sidebar-link stay" href="/" target="_self"><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Dashboard</span></a></li>
         <? if(strpos($_SERVER['REQUEST_URI'], '/invoice.php') !== false || strpos($_SERVER['REQUEST_URI'], '/editinvoice.php') !== false){ ?>
-          <li class="nav-item dropdown open"><a class="sidebar-link stay" href="invoices.php"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
+          <li class="nav-item dropdown open"><a class="sidebar-link stay" href="invoices.php" target="_self"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
         <?  if(strpos($_SERVER['REQUEST_URI'], '/invoice.php') !== false){?>
             <ul class="dropdown-menu"  style="display: block;">
               <li><a class="sidebar-link " href="javascript:void(0);">View Invoice</a></li>
@@ -32,7 +32,7 @@
           </ul>
         <? }
       } else {?>
-        <li class="nav-item <? if(strpos($_SERVER['REQUEST_URI'], '/invoices.php') !== false){ echo 'active';}?>"><a class="sidebar-link stay" href="invoices.php"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span></a>
+        <li class="nav-item <? if(strpos($_SERVER['REQUEST_URI'], '/invoices.php') !== false){ echo 'active';}?>"><a class="sidebar-link stay" href="invoices.php" target="_self"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span></a>
     <?  }?>
 
 

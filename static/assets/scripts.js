@@ -28,5 +28,5 @@ $(function() {
        });
     });
 
-    $.stayInWebApp('a.stay');
+    $.stayInWebApp('a[target=_self]');
 });
