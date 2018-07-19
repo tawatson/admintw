@@ -24,6 +24,7 @@ $userInfo = $db->single();
     <title>Invoices</title>
     <link rel="stylesheet" href="static/jquery-ui.min.css">
     <link rel="stylesheet" href="static/jquery-ui.structure.css">
+    <? require "components/webapp.php";?>
     <style>
       #loader {
         transition: all .3s ease-in-out;

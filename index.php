@@ -83,14 +83,7 @@ foreach ($countryvisits['rows'] as $row) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=0">
   <title>Dashboard</title>
-  <!-- iPad (Retina, portrait) SPLASHSCREEN-->
-  <link href="/static/assets/static/images/web-app-splash-portrait.png" media="(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-  <!-- iPad (Retina, landscape) SPLASHSCREEN-->
-  <link href="/static/assets/static/images/web-app-splash.png" media="(device-width: 1536px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-  <!-- iPad (Retina) ICON-->
-  <link href="/static/assets/static/images/web-app.png" sizes="144x144" rel="apple-touch-icon">
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <? require "components/webapp.php";?>
   <style>
     #loader {
       transition: all .3s ease-in-out;

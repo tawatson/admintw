@@ -46,6 +46,7 @@ foreach ($items as $item) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Invoice #<? echo $invoiceId;?></title>
+    <? require "components/webapp.php";?>
     <style>
       #loader {
         transition: all .3s ease-in-out;

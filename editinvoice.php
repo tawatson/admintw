@@ -45,6 +45,7 @@ $items = $db->resultSet();
     <title>Editing: Invoice #
       <? echo $invoiceId;?>
     </title>
+    <? require "components/webapp.php";?>
     <style>
       #loader {
         transition: all .3s ease-in-out;

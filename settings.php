@@ -25,6 +25,7 @@ $repos = $db->resultSet();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Settings</title>
+    <? require "components/webapp.php";?>
     <style>
       #loader {
         transition: all .3s ease-in-out;
