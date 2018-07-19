@@ -28,7 +28,8 @@ $(function() {
        });
     });
 
-    $("body").on('click','a',function(){
+    $("body").on('click','a',function(e){
+      e.preventDefault();
       window.location=this.getAttribute("href");
       return false;
     });
