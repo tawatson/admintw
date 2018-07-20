@@ -265,8 +265,9 @@ $items = $db->resultSet();
         data: {
           data: JSON.stringify($data),
           action: "saveInvoiceItems",
-		  invoice_id: "<? echo $invoiceId;?>"
+		      invoice_id: "<? echo $invoiceId;?>"
         },
+        dataType: 'json',
         success: function (response) {
           $(".saveInvoiceItems").text('Saved');
           document.location.href = "invoice.php?id=<? echo $invoiceId;?>";
