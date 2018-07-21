@@ -54,6 +54,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
       $toDelete = arrayFlatten($dbItems);
 
+      if(!empty($dbItems)){
       foreach ($dbItems as $dbItem) {
         foreach ($items as $jsonItem) {
           if($jsonItem['item id'] != '0'){
@@ -79,6 +80,16 @@ switch ($_SERVER['REQUEST_METHOD']) {
           }
         }
       }
+    } else {
+      foreach ($items as $jsonItem) {
+        $db->query("INSERT INTO wa_invoice_items (invoice_id, description, cost, qty) VALUES (:id, :des, :cost, :qty)");
+        $db->bind(":id",$_POST['invoice_id']);
+        $db->bind(":des",$jsonItem['item description']);
+        $db->bind(":cost",$jsonItem['item cost']);
+        $db->bind(":qty",$jsonItem['qty']);
+        $db->execute();
+      }
+    }
 
       if(!empty($toDelete)){
         foreach ($toDelete as $id) {
