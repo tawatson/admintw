@@ -99,11 +99,10 @@ $userInfo = $db->single();
           <div id="mainContent">
             <div class="container-fluid">
               <h3 class="c-grey-900 mT-10 mB-30">Clients
-                <a class="btn btn-primary c-white pull-right" data-action="newClient" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="ti-plus"></i> New Invoice</a>
+                <a class="btn btn-primary c-white pull-right" data-action="newClient" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="ti-plus"></i> New Client</a>
               </h3>
               <div class="row">
-                <div class="col-md-12">
-                  <div class="p-20 mB-20">
+
                         <?
                           // Load Invoices
                           $db->query("SELECT * FROM wa_clients");
@@ -113,17 +112,20 @@ $userInfo = $db->single();
                           } else {
                             foreach ($clients as $client) {
                         ?>
+                    <div class="col-md-12">
+                      <div class="p-20 mB-20">
                         <div class="card">
                           <div class="card-body">
                             <a class="mB-0 h3" href="client.php?id=<? echo $client['id'];?>"><? echo $client['name'];?></a>
                           </div>
                         </div>
+                      </div>
+                    </div>
                             <?
                           }
                         }?>
 
-                  </div>
-                </div>
+
               </div>
             </div>
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="newClient" aria-hidden="true">
@@ -138,7 +140,7 @@ $userInfo = $db->single();
                   </div>
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-primary createClient">Create Client</button>
-                    <input type="reset" form="invoiceForm" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <input type="reset" form="invoiceForm" class="btn btn-secondary" data-dismiss="modal">
                   </div>
                 </div>
               </div>
