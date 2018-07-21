@@ -131,7 +131,7 @@ foreach ($items as $item) {
                 </div>
               </h3>
               <div class="row mB-30">
-                <div class="col-md-3 mL-30">
+                <div class="col-md-6 mL-30">
                   <p><strong><? echo $clientInfo['name'];?></strong>
                     <? if(!empty($clientInfo['contact_name'])){ echo"<br/>(Att: ".$clientInfo['contact_name'].")";}?><br>
                       <? echo $clientInfo['address1'];?><br>

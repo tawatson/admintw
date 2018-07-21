@@ -123,7 +123,7 @@ $items = $db->resultSet();
                 <a class="btn btn-secondary c-white pull-right mL-10" href="invoice.php?id=<? echo $invoiceId;?>" target="_self">Cancel</a> <a class="btn btn-success c-white pull-right saveInvoiceItems"><i class="ti-pencil-alt"></i> Save Invoice</a>
               </h3>
               <div class="row mB-30">
-                <div class="col-md-3 mL-30">
+                <div class="col-md-6 mL-30">
                   <p><strong><? echo $clientInfo['name'];?></strong>
                     <? if(!empty($clientInfo['contact_name'])){ echo"<br/>(Att: ".$clientInfo['contact_name'].")";}?><br>
                       <? echo $clientInfo['address1'];?><br>
