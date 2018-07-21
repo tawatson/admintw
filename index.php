@@ -14,9 +14,6 @@ $db->query("SELECT * FROM wa_users WHERE email = :email");
 $db->bind(":email", $_SESSION['username']);
 $userInfo = $db->single();
 
-$db->query("SELECT * FROM wa_repos");
-$repos = $db->resultSet();
-
 $ganalytics->setAccountId('ga:150420384');
 //GANALYTICS SITE VISITS (TO DO: MAKE THIS AJAX TO EASE LOAD TIME)
 $params = array(
@@ -241,38 +238,6 @@ foreach ($countryvisits['rows'] as $row) {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="masonry-item col-md-12">
-              <div class="bd bgc-white">
-                <div class="layers">
-                  <div class="layer w-100 pX-20 pT-20">
-                    <h6 class="lh-1">Software Status <a class="pull-right refreshRepos"><i class="fa fa-refresh"></i></a></h6></div>
-                  <div class="layer p-20 w-100">
-                    <table class="table table-hover">
-                      <tr>
-                        <th>Repo</th>
-                        <th>Last Pull</th>
-                        <th>Status</th>
-                      </tr>
-                    <? foreach ($repos as $repo) {
-                      $repoClass = new Tawatson_gitHook($db,$repo['local_dir'],$repo['repo_name']);
-                      ?>
-
-                      <tr>
-                            <td><? echo $repo['tidy_name'];?></td>
-                            <td><? echo $timeAgo->inWords(date("M jS, Y g:ia", strtotime($repo['last_pull']. " + 17 hours")));?></td>
-                            <? if($repoClass->isUpToDate()){?>
-                            <td class="table-success" id="repo-<?echo $repo['id'];?>">Up to Date</td>
-                            <?} else {?>
-                            <td class="table-warning" id="repo-<?echo $repo['id'];?>"><h4>Out of Date! <a data-repo="<? echo $repo['id'];?>"  class="repoUpdate btn btn-xs btn-success pull-right">Update Now <i class="fa fa-download"></i></a></h4></td>
-                            <?}?>
-                        </tr>
-
-                    <? } ?>
-                  </table>
                   </div>
                 </div>
               </div>
