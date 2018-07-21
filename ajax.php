@@ -72,7 +72,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
               $toDelete = array_diff($toDelete, array($dbItem['id']));
             } else {
               //NOT IN DB, INSERT;
-              $db->query("INSERT INTO wa_invoice_items  (id,invoice_id,description, cost, qty,item_date) VALUES (id,:invoice,:des, :cost, :qty, :newtime)");
+              $db->query("INSERT INTO wa_invoice_items  (id,invoice_id,description, cost, qty,item_date) VALUES (:id,:invoice,:des, :cost, :qty, :newtime)");
               $db->bind(":id",$jsonItem['item id']);
               $db->bind(":invoice",$_POST['invoice_id']);
               $db->bind(":des",$jsonItem['item description']);
