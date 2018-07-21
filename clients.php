@@ -108,7 +108,7 @@ $userInfo = $db->single();
                           // Load Invoices
                           $db->query("SELECT * FROM wa_clients");
                           $clients = $db->resultSet();
-                          if(empty($$clients)){
+                          if(empty($clients)){
                             echo '<h3>Nothing to show here...</h3>';
                           } else {
                             foreach ($clients as $client) {
