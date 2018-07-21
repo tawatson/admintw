@@ -32,11 +32,24 @@
           </ul>
         <? }
       } else {?>
-        <li class="nav-item <? if(strpos($_SERVER['REQUEST_URI'], '/invoices.php') !== false){ echo 'active';}?>"><a class="sidebar-link stay" href="invoices.php" target="_self"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span></a>
+        <li class="nav-item <? if(strpos($_SERVER['REQUEST_URI'], '/invoices.php') !== false){ echo 'active';}?>"><a class="sidebar-link stay" href="invoices.php" target="_self"><span class="icon-holder"><i class="c-red-500 ti-money"></i> </span><span class="title">Invoices</span></a></li>
     <?  }?>
 
+    <? if(strpos($_SERVER['REQUEST_URI'], '/client.php') !== false || strpos($_SERVER['REQUEST_URI'], '/editclient.php') !== false){ ?>
+      <li class="nav-item dropdown open"><a class="sidebar-link stay" href="clients.php" target="_self"><span class="icon-holder"><i class="c-green-500 ti-user"></i> </span><span class="title">Clients</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
+    <?  if(strpos($_SERVER['REQUEST_URI'], '/client.php') !== false){?>
+        <ul class="dropdown-menu"  style="display: block;">
+          <li><a class="sidebar-link " href="javascript:void(0);">View Client</a></li>
+        </ul>
+    <?  } else { ?>
+      <ul class="dropdown-menu" style="display: block;">
+        <li><a class="sidebar-link " href="javascript:void(0);">Edit Client</a></li>
+      </ul>
+    <? }
+  } else {?>
+    <li class="nav-item <? if(strpos($_SERVER['REQUEST_URI'], '/clients.php') !== false){ echo 'active';}?>"><a class="sidebar-link stay" href="clients.php" target="_self"><span class="icon-holder"><i class="c-green-500 ti-user"></i> </span><span class="title">Clients</span></a></li>
+<?  }?>
 
-      </li>
 
     </ul>
   </div>
