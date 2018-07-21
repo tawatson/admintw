@@ -56,7 +56,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
       foreach ($dbItems as $dbItem) {
         foreach ($items as $jsonItem) {
-          if($jsonItem['item id'] != 0){
+          if($jsonItem['item id'] != '0'){
             //CHECK DATABASE ITEMS ARE IN SUBMISSION
             if(in_array($jsonItem['item id'], $toDelete)) {
               //IN DB, UPDATE, PREVENT DELETION
