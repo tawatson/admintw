@@ -100,7 +100,7 @@ $items = $db->resultSet();
     <link href="static/style.css" rel="stylesheet">
   </head>
 
-  <body class="app is-collapsed">
+  <body class="app">
     <div id="loader">
       <div class="spinner"></div>
     </div>
