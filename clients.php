@@ -112,7 +112,7 @@ $userInfo = $db->single();
                           } else {
                             foreach ($clients as $client) {
                         ?>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="p-20 mB-20">
                         <div class="card">
                           <div class="card-body">
