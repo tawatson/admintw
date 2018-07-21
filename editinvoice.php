@@ -267,11 +267,12 @@ $items = $db->resultSet();
           action: "saveInvoiceItems",
 		      invoice_id: "<? echo $invoiceId;?>"
         },
-        dataType: 'jsonp',
-        success: function (response) {
-          $(".saveInvoiceItems").text('Saved');
-          document.location.href = "invoice.php?id=<? echo $invoiceId;?>";
-        },
+        complete: function(jqXHR) {
+          if(jqXHR.readyState === 4) {
+            $(".saveInvoiceItems").text('Saved');
+            document.location.href = "invoice.php?id=<? echo $invoiceId;?>";
+          }
+        } 
         error: function(xhr, status, error) {
           var err = eval("(" + xhr.responseText + ")");
           alert(err.Message);
