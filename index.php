@@ -164,7 +164,7 @@ foreach ($countryvisits['rows'] as $row) {
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
                         <div class="peer peer-greed"><h4><? echo $prevVisits; ?></h4></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"><? echo $diffVisits;?> change</span></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"><? echo $diffVisits;?></span></div>
                       </div>
                     </div>
                   </div>
@@ -176,7 +176,7 @@ foreach ($countryvisits['rows'] as $row) {
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
                         <div class="peer peer-greed"><h4><? echo $numPageViews;?></h4></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"><? echo $diffPageViews;?> change</span></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"><? echo $diffPageViews;?></span></div>
                       </div>
                     </div>
                   </div>
@@ -188,7 +188,7 @@ foreach ($countryvisits['rows'] as $row) {
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
                         <div class="peer peer-greed"><h4><? echo $uniqueViews;?></h4></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500"><? echo $diffUniqueViews;?> change</span></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500"><? echo $diffUniqueViews;?></span></div>
                       </div>
                     </div>
                   </div>
@@ -200,7 +200,7 @@ foreach ($countryvisits['rows'] as $row) {
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
                         <div class="peer peer-greed"><h4><? echo round($bounceRate);?>%</h4></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500"><? echo round($diffBounceRate);?>% change</span></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500"><? echo round($diffBounceRate);?>%</span></div>
                       </div>
                     </div>
                   </div>

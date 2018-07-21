@@ -170,10 +170,8 @@ $items = $db->resultSet();
                             <td class="totalItemCost">
                               <? echo "$".$item['cost'] * $item['qty'];?>
                             </td>
-                            <td>
+                            <td style="text-align:right;">
                               <span class="table-remove ti-close" data-toggle="tooltip" data-placement="top" title="Remove Item"></span>
-                              <span class="table-up ti-arrow-up" data-toggle="tooltip" data-placement="top" title="Shift Item Up"></span>
-                              <span class="table-down ti-arrow-down" data-toggle="tooltip" data-placement="top" title="Shift Item Down"></span>
                             </td>
                           </tr>
                           <?  }
@@ -181,14 +179,12 @@ $items = $db->resultSet();
                               <!-- This is our clonable table line -->
                               <tr class="d-none">
                                 <td>0</td>
-                                <td contenteditable="true">Lorem Ipsum</td>
+                                <td contenteditable="true">[Enter Item Description...]</td>
                                 <td contenteditable="true" class="itemCost">0.00</td>
                                 <td contenteditable="true" class="itemQty">0</td>
                                 <td class="totalItemCost">$0.00</td>
-                                <td>
+                                <td style="text-align:right;">
                                   <span class="table-remove ti-close" data-toggle="tooltip" data-placement="top" title="Remove Item"></span>
-                                  <span class="table-up ti-arrow-up" data-toggle="tooltip" data-placement="top" title="Shift Item Up"></span>
-                                  <span class="table-down ti-arrow-down" data-toggle="tooltip" data-placement="top" title="Shift Item Down"></span>
                                 </td>
                               </tr>
                       </table>
@@ -218,18 +214,6 @@ $items = $db->resultSet();
 
       $('.table-remove').click(function() {
         $(this).parents('tr').detach();
-      });
-
-      $('.table-up').click(function() {
-        var $row = $(this).parents('tr');
-        if ($row.index() === 1) return; // Don't go above the header
-        $row.prev().before($row.get(0));
-      });
-
-      $('.table-down').click(function() {
-        $(this).addClass("disabled").text("Saving...");
-        var $row = $(this).parents('tr');
-        $row.next().after($row.get(0));
       });
 
       // A few jQuery helpers for exporting only

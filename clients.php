@@ -140,7 +140,7 @@ $userInfo = $db->single();
                   </div>
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-primary createClient">Create Client</button>
-                    <input type="reset" form="invoiceForm" class="btn btn-secondary" data-dismiss="modal">
+                    <input type="reset" form="invoiceForm" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
                   </div>
                 </div>
               </div>
