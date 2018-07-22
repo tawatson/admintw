@@ -105,13 +105,13 @@ $clientInfo = $db->single();
                 <div class="btn-group pull-right">
                   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Actions</button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item stay" href="editclient.php?id=<? echo $invoiceId;?>" target="_self"><i class="ti-pencil-alt mR-10"></i> Edit Client</a>
+                    <a class="dropdown-item stay" href="editclient.php?id=<? echo $clientId;?>" target="_self"><i class="ti-pencil-alt mR-10"></i> Edit Client</a>
                     <a class="dropdown-item stay" href="#"><i class="ti-trash mR-10"></i> Delete Client</a>
                   </div>
                 </div>
               </h3>
               <div class="row">
-                
+
               </div>
             </div>
           </div>

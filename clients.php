@@ -116,7 +116,7 @@ $userInfo = $db->single();
                       <div class="p-20 mB-20">
                         <div class="card">
                           <div class="card-body">
-                            <a class="mB-0 h3" href="client.php?id=<? echo $client['id'];?>"><? echo $client['name'];?></a>
+                            <a class="mB-0 h3" href="client.php?id=<? echo $client['id'];?>" target="_self"><? echo $client['name'];?></a>
                           </div>
                         </div>
                       </div>
