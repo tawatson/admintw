@@ -20,6 +20,7 @@ class ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0
         array (
             'Psr\\Log\\' => 8,
             'Phelium\\Component\\' => 18,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
@@ -43,6 +44,10 @@ class ComposerStaticInit148f23a57baf9da28dddd197f1bd75b0
         'Phelium\\Component\\' => 
         array (
             0 => __DIR__ . '/..' . '/phelium/recaptcha/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Mpdf\\' => 
         array (

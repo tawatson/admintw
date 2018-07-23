@@ -114,6 +114,7 @@ $clientInfo = $db->single();
               </h3>
                   <div class="row">
                     <div class="col-md-6">
+                      <h4>Client Info</h4>
                       <div class="form-group row"><label class="col-sm-3 col-form-label">Contact Name</label>
                         <div class="col-sm-9"><input type="text" class="form-control" placeholder="Contact Name" readonly value="<? echo (empty($clientInfo['contact_name'])? "N/A" : $clientInfo['contact_name']); ?>"></div>
                       </div>

@@ -4,6 +4,7 @@
         "mpdf/mpdf": "^7.1",
         "jimmiw/php-time-ago": "^2.0",
         "phelium/recaptcha": "^1.0",
-        "filp/whoops": "^2.2"
+        "filp/whoops": "^2.2",
+        "phpmailer/phpmailer": "^6.0"
     }
 }
