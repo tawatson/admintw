@@ -14,7 +14,7 @@ $db->query("SELECT * FROM wa_users WHERE email = :email");
 $db->bind(":email", $_SESSION['username']);
 $userInfo = $db->single();
 
-$ganalytics->setAccountId('ga:150420384');
+/*$ganalytics->setAccountId('ga:150420384');
 //GANALYTICS SITE VISITS (TO DO: MAKE THIS AJAX TO EASE LOAD TIME)
 $params = array(
 	'metrics' => 'ga:visits',
@@ -70,7 +70,7 @@ $jvmData = Array();
 
 foreach ($countryvisits['rows'] as $row) {
   $jvmData[$countryCodes[$row[0]]] = $row[1];
-}
+}*/
 
 ?>
 <!DOCTYPE html>
@@ -155,7 +155,7 @@ foreach ($countryvisits['rows'] as $row) {
         <div id="mainContent">
           <div class="row gap-20 masonry pos-r">
             <div class="masonry-sizer col-md-6"></div>
-            <div class="masonry-item w-100">
+            <!--<div class="masonry-item w-100">
               <div class="row gap-20">
                 <div class="col-md-3">
                   <div class="layers bd bgc-white p-20">
@@ -163,8 +163,8 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Total Visits</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"><h4><? echo $prevVisits; ?></h4></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"><? echo $diffVisits;?></span></div>
+                        <div class="peer peer-greed"><h4><? // echo $prevVisits; ?></h4></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"><? // echo $diffVisits;?></span></div>
                       </div>
                     </div>
                   </div>
@@ -175,8 +175,8 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Total Page Views</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"><h4><? echo $numPageViews;?></h4></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"><? echo $diffPageViews;?></span></div>
+                        <div class="peer peer-greed"><h4><? // echo $numPageViews;?></h4></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"><? // echo $diffPageViews;?></span></div>
                       </div>
                     </div>
                   </div>
@@ -187,8 +187,8 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Unique Visitor</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"><h4><? echo $uniqueViews;?></h4></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500"><? echo $diffUniqueViews;?></span></div>
+                        <div class="peer peer-greed"><h4><? // echo $uniqueViews;?></h4></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500"><? // echo $diffUniqueViews;?></span></div>
                       </div>
                     </div>
                   </div>
@@ -199,8 +199,8 @@ foreach ($countryvisits['rows'] as $row) {
                       <h6 class="lh-1">Bounce Rate</h6></div>
                     <div class="layer w-100">
                       <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"><h4><? echo round($bounceRate);?>%</h4></div>
-                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500"><? echo round($diffBounceRate);?>%</span></div>
+                        <div class="peer peer-greed"><h4><? // echo round($bounceRate);?>%</h4></div>
+                        <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500"><? // echo round($diffBounceRate);?>%</span></div>
                       </div>
                     </div>
                   </div>
@@ -224,16 +224,16 @@ foreach ($countryvisits['rows'] as $row) {
                       <div class="layer w-100">
                         <div class="layers">
                           <div class="layer w-100">
-                            <h5 class="mB-5"><? echo $jvmData['AU'];?></h5><small class="fw-600 c-grey-700">Visitors From Australia</small>
+                            <h5 class="mB-5"><? // echo $jvmData['AU'];?></h5><small class="fw-600 c-grey-700">Visitors From Australia</small>
                           </div>
                           <div class="layer w-100 mT-15">
-                            <h5 class="mB-5"><? echo $jvmData['US'];?></h5><small class="fw-600 c-grey-700">Visitors From United States</small>
+                            <h5 class="mB-5"><? // echo $jvmData['US'];?></h5><small class="fw-600 c-grey-700">Visitors From United States</small>
                           </div>
                           <div class="layer w-100 mT-15">
-                            <h5 class="mB-5"><? echo $jvmData['GB'];?></h5><small class="fw-600 c-grey-700">Visitors From United Kingdom</small>
+                            <h5 class="mB-5"><? // echo $jvmData['GB'];?></h5><small class="fw-600 c-grey-700">Visitors From United Kingdom</small>
                           </div>
                           <div class="layer w-100 mT-15">
-                            <h5 class="mB-5"><? echo $jvmData['IN'];?></h5><small class="fw-600 c-grey-700">Visitors From India</small>
+                            <h5 class="mB-5"><? // echo $jvmData['IN'];?></h5><small class="fw-600 c-grey-700">Visitors From India</small>
                           </div>
                         </div>
                       </div>
@@ -241,7 +241,7 @@ foreach ($countryvisits['rows'] as $row) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="masonry-item col-md-6">
               <div class="bd bgc-white p-20">
                 <div class="layers">
@@ -353,8 +353,8 @@ foreach ($countryvisits['rows'] as $row) {
         </div>
       </main>
       <? require "components/footer.php";?>
-  <script>
-    var countryData = <? echo json_encode($jvmData);?>;
+<!--  <script>
+    var countryData = <? // echo json_encode($jvmData);?>;
       $(function(){
       $('#world-map-marker').vectorMap({
         map: 'world_mill',
@@ -376,7 +376,7 @@ foreach ($countryvisits['rows'] as $row) {
         }
       });
     });
-  </script>
+  </script> -->
 
 </body>
 
