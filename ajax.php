@@ -55,8 +55,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
       $toDelete = arrayFlatten($dbItems);
 
       if(!empty($dbItems)){
-      foreach ($dbItems as $dbItem) {
-        foreach ($items as $jsonItem) {
+      foreach ($items as $jsonItem) {
+        foreach ($dbItems as $dbItem) {
           if($jsonItem['item id'] != '0'){
             //CHECK DATABASE ITEMS ARE IN SUBMISSION
             if(in_array($jsonItem['item id'], $toDelete)) {
