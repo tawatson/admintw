@@ -2,11 +2,11 @@
 // Initialize the session
 session_start();
 
-// If session variable is not set it will redirect to login page
+/*// If session variable is not set it will redirect to login page
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: signin.php?next=".urlencode($_SERVER['REQUEST_URI']));
   exit;
-}
+}*/
 
 require "config.php";
 
