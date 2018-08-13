@@ -70,7 +70,7 @@ foreach ($items as $item) {
         vertical-align: top;
     }
 
-    .invoice-box table tr td:nth-child(2) {
+    .invoice-box table tr td:not(:nth-child(1)) {
         text-align: right;
     }
 
@@ -106,7 +106,7 @@ foreach ($items as $item) {
         border-bottom: none;
     }
 
-    .invoice-box table tr.total td:nth-child(2) {
+    .invoice-box table tr.total td:nth-child(4) {
         border-top: 2px solid #eee;
         font-weight: bold;
     }
@@ -146,17 +146,17 @@ foreach ($items as $item) {
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
-                <td colspan="2">
+                <td colspan="4">
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="/static/assets/static/images/logo.png" style="width:100%; max-width:300px;">
+                                <img src="/static/assets/static/images/logo.png" style="width:100%; max-width:120px;">
                             </td>
 
                             <td>
-                                Invoice #<? echo $invoiceId; ?><br>
-                                Issued: <? echo date('M jS, Y', strtotime($invoiceInfo['issue_date']));?><br>
-                                Due: <? echo date('M jS, Y', strtotime($invoiceInfo['due_date']));?>
+                                <h1 style="margin-bottom:-20px">Invoice #<? echo $invoiceId; ?></h1><br>
+                                <strong>Issued:</strong> <? echo date('M jS, Y', strtotime($invoiceInfo['issue_date']));?><br>
+                                <strong>Due:</strong> <? echo date('M jS, Y', strtotime($invoiceInfo['due_date']));?>
                             </td>
                         </tr>
                     </table>
@@ -164,7 +164,7 @@ foreach ($items as $item) {
             </tr>
 
             <tr class="information">
-                <td colspan="2">
+                <td colspan="4">
                     <table>
                         <tr>
                             <td>
@@ -213,10 +213,23 @@ foreach ($items as $item) {
 
             <tr class="total">
                 <td></td>
+                <td></td>
+                <td></td>
 
                 <td>
                    Total: $385.00
                 </td>
+            </tr>
+            <tr class="heading">
+              <td>Payment Method</td>
+            </tr>
+            <tr class="item">
+              <td colspan="4">
+                <p>Please pay by direct bank transfer by the due date to the following:</p>
+                <p style="margin-left:20px;"><strong>Account Name:</strong> Terrence A Watson Web Services</p>
+                <p style="margin-left:20px;"><strong>BSB #:</strong> 082-625</p>
+                <p style="margin-left:20px;"><strong>Acc #:</strong> 88-782-8393</p>
+              </td>
             </tr>
         </table>
     </div>
