@@ -211,17 +211,17 @@ foreach ($items as $item) {
                 echo "<tr class='item'><td colspan='4'><h3>No items to display</h3></td></tr>";
             }?>
 
-            <tr class="total">
+            <tr class="total details">
                 <td></td>
                 <td></td>
                 <td></td>
 
                 <td>
-                   Total: $385.00
+                   Total: $<? echo number_format(array_sum($cost), 2, '.', ',');?>
                 </td>
             </tr>
             <tr class="heading">
-              <td>Payment Method</td>
+              <td colspan="4">Payment Method</td>
             </tr>
             <tr class="item">
               <td colspan="4">
